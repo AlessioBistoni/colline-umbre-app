@@ -1,0 +1,40 @@
+.welcome{
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding-top: 120px;
+  padding-left: 100px;
+  align-items: center;
+
+}
+
+.storia {
+    
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding-top: 200px;
+    padding-right: 100px;
+    align-items: center;
+  
+}
+
+.territorio{
+
+
+  width: 100%;
+  height: auto;
+  padding-top: 150px;
+  padding-right: 100px;
+  padding-left: 100px;
+  align-items: center;
+
+
+
+}
+
+.image {
+  width: 100px;
+  height: 10px;
+}
+

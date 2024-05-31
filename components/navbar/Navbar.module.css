@@ -1,0 +1,31 @@
+.navbar {
+
+    padding: 0rem;
+    text-align: center;
+    position: fixed; /* Fissa la navbar in alto */
+    top: 3rem; /* Posiziona la navbar all'inizio della pagina */
+    width: 100%; /* Imposta la larghezza al 100% della finestra */
+    z-index: 1000; /* Assicura che la navbar sia sopra gli altri elementi */
+  }
+  
+  .navbarList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbarItem {
+    display: inline-block; /* Cambiato da "inline" a "inline-block" */
+    margin-right: 4rem; /* Aumenta la distanza tra gli elementi */
+    margin-left: 4rem; /* Aumenta la distanza tra gli elementi */
+  }
+
+  .navbarItem a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .navbarItem a:hover {
+    text-decoration: underline;
+  }
+  
