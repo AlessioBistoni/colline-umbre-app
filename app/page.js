@@ -7,7 +7,7 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 export default function Home() {
   return (
     <div>
-      <Parallax pages={8}>
+      <Parallax pages={6}>
       
 
           <ParallaxLayer speed={0} offset={0}>
@@ -30,20 +30,6 @@ export default function Home() {
           </ParallaxLayer>
 
         
-
-        {/* immagine di introduzione con la coppia a cui viene servito il vino */}
-        <ParallaxLayer speed={-0.1} offset={1.85}>
-          <div className={styles.imageIntroduzioneContainer}>
-        <Image
-          src="/intro.jpg"
-          alt="Intro"
-          layout="responsive"
-          width={2000}
-          height={1125}
-          className={styles.imageIntroduzione}
-        />
-        </div>
-        </ParallaxLayer>
 
         {/* scritta benvenuti della cantina colline umbre, si trova sopra all'immagine della coppia */}
         <ParallaxLayer speed={0} offset={1.5}>
@@ -68,8 +54,34 @@ export default function Home() {
         </ParallaxLayer>
         
 
+
+
+        {/* immagine di introduzione con la coppia a cui viene servito il vino */}
+        <ParallaxLayer speed={0} offset={1.85}>
+
+          <div className={styles.imageIntroduzioneContainer}>
+
+        <Image
+          src="/intro.jpg"
+          alt="Intro"
+          layout="responsive"
+          width={2000}
+          height={1125}
+          className={styles.imageIntroduzione}
+        />
+
+        </div>
+
+        <ParallaxLayer speed={0.1} offset={0}><div className={styles.spacerstart}></div></ParallaxLayer>
+        <ParallaxLayer speed={0.1} offset={0}><div className={styles.spacerend}></div></ParallaxLayer>
+
+        </ParallaxLayer>
+
+
+
+
       {/* scritta esplora l'eccezionale modno dei vini umbri e sottotitolo */}
-        <ParallaxLayer speed={0} offset={2.65}>
+        <ParallaxLayer speed={0} offset={2.7}>
         <div className={styles.presentazioneVini}>
           <h1 className="mx-5 h2">
             {" "}
@@ -88,13 +100,14 @@ export default function Home() {
         <div className={styles.vinobianco}>
           <div className={styles.imageVino}>
             <Image
-              src="/bianco.jpg"
+              src="/bianco.png"
               alt="Intro"
               layout="responsive"
               width={2000}
               height={1125}
             />
           </div>
+
 
           <div>
             <h1>Vini Bianchi: La Freschezza delle Colline Umbre</h1>
@@ -129,7 +142,7 @@ export default function Home() {
           </div>
           <div className={styles.imageVino}>
             <Image
-              src="/bianco.jpg"
+              src="/rosso.png"
               alt="Intro"
               layout="responsive"
               width={2000}

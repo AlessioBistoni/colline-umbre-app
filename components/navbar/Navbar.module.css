@@ -6,6 +6,7 @@
     top: 3rem; /* Posiziona la navbar all'inizio della pagina */
     width: 100%; /* Imposta la larghezza al 100% della finestra */
     z-index: 1000; /* Assicura che la navbar sia sopra gli altri elementi */
+    transition: background-color 0.3s ease;
   }
   
   .navbarList {
@@ -27,5 +28,10 @@
   
   .navbarItem a:hover {
     text-decoration: underline;
+  }
+
+  .scrolled {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
