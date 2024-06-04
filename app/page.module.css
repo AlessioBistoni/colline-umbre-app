@@ -1,18 +1,26 @@
-.text {
+.scrittaDiBenvenuto {
   position: absolute;
+  text-align: center;
   top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 10px;
+}
+
+.titoloDiBenvenuto {
+  font-size: 3em;
+  font-weight: bold;
+  color: #ffffff; /* Bianco panna */
 
 }
+
 .imageWelcomeContainer{
   height: 100vh; /* Imposta l'altezza della finestra del browser */
   overflow: hidden; /* Nasconde l'eventuale parte eccedente dell'immagine */
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: blue;
+
   }
 
 
@@ -24,12 +32,13 @@
   object-fit: cover; /* Questo taglia l'immagine in larghezza se necessario */
 }
 
-.introduzione {
+.TestoDiIntroduzione {
 
   padding-left: 400px;
   padding-right: 400px;
-  padding-top: 150px;
+  padding-top: 0px;
   padding-bottom: 0px;
+
   
 }
 
@@ -53,6 +62,7 @@
   object-position: center; /* Centra l'immagine all'interno del contenitore */
 }
 
+/* gli spacer sono delle porzioni dello stesso colore dello sfondo utilizzate nell'effetto parallasse dell'immagine di introduzione per nascondere il pezzo superiore e inferiore dell'immagine */
 .spacerstart {
   height: 300px;
   background-color: #F5E7DE; /* Bianco panna */
@@ -69,27 +79,65 @@
   align-items: flex-end;
   padding-left: 400px;
   padding-right: 400px;
-  padding-top: 400px;
-  padding-bottom: 100px;
-
-}
-
-.imageVino {
-  width: 3000px;
-  height: auto;
-  padding: 80px;
-}
-
-.vinobianco{
-  display: flex;
-  align-items: center;
-  padding-left: 400px;
-  padding-right: 400px;
   padding-top: 0px;
   padding-bottom: 0px;
 
 
+}
 
+
+
+
+
+.vinoContainer{
+  position: relative;
+  width: 60%;
+  height: 1000px;
+
+  margin:auto;
+}
+
+.vinoBiancoImageContainer{
+  width: 50%; /* per prendere la metà sinistra dello schermo */
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+  padding: 0px;
+}
+
+.vinoBiancoDescrizione{
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translateY(-50%);
+  padding: 0px;
+}
+
+.vinoRossoImageContainer{
+  width: 50%; /* per prendere la metà sinistra dello schermo */
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+  padding: 0px;
+  left:50%
+}
+
+.vinoRossoDescrizione{
+  position: absolute;
+  top: 50%;
+  right:50%;
+  transform: translateY(-50%);
+  padding: 0px;
+}
+
+.imageVino {
+  max-width: 200px;
 }
 
 
@@ -98,56 +146,91 @@
 
 
 @media only screen and (max-width: 1440px) {
-  .introduzione {
+  .TestoDiIntroduzione {
     padding-top: 160px;
+    padding-left: 300px;
+    padding-right: 300px;
+  }
+
+  .presentazioneVini{
     padding-left: 300px;
     padding-right: 300px;
   }
 }
 
 @media only screen and (max-width: 1280px) {
-  .introduzione {
+  .TestoDiIntroduzione {
     padding-top: 160px;
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
+  .presentazioneVini{
     padding-left: 200px;
     padding-right: 200px;
   }
 }
 
 @media only screen and (max-width: 1024px) {
-  .introduzione {
+  .TestoDiIntroduzione {
     padding-top: 100px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .presentazioneVini{
     padding-left: 30px;
     padding-right: 30px;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .introduzione {
+  .TestoDiIntroduzione {
     padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .presentazioneVini{
     padding-left: 20px;
     padding-right: 20px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .introduzione {
+  .TestoDiIntroduzione {
     padding-top: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .presentazioneVini{
     padding-left: 15px;
     padding-right: 15px;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .introduzione {
+  .TestoDiIntroduzione {
     padding-top: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .presentazioneVini{
     padding-left: 10px;
     padding-right: 10px;
   }
 }
 
 @media only screen and (max-width: 320px) {
-  .introduzione {
+  .TestoDiIntroduzione {
     padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .presentazioneVini{
     padding-left: 5px;
     padding-right: 5px;
   }

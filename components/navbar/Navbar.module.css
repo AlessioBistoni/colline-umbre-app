@@ -1,37 +1,30 @@
-.navbar {
-
-    padding: 0rem;
-    text-align: center;
-    position: fixed; /* Fissa la navbar in alto */
-    top: 3rem; /* Posiziona la navbar all'inizio della pagina */
-    width: 100%; /* Imposta la larghezza al 100% della finestra */
-    z-index: 1000; /* Assicura che la navbar sia sopra gli altri elementi */
-    transition: background-color 0.3s ease;
-  }
-  
-  .navbarList {
+/* components/Navbar.module.css */
+.barra{
+    display: flex;
+    background-color: rgb(255, 255, 255, 0.8);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 25px;
+    margin-left: -80px;
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbarItem {
-    display: inline-block; /* Cambiato da "inline" a "inline-block" */
-    margin-right: 4rem; /* Aumenta la distanza tra gli elementi */
-    margin-left: 4rem; /* Aumenta la distanza tra gli elementi */
-  }
+    font-size: 1.25rem;
+    margin-top: 20px;
+}
 
-  .navbarItem a {
-    color: black;
-    text-decoration: none;
-  }
-  
-  .navbarItem a:hover {
-    text-decoration: underline;
-  }
-
-  .scrolled {
+.logoImageContainer{
+    width: 80px;
+    margin-left: 30px;
     background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
+    border-radius: 100px;
+    opacity: 0.8;
+
+
+
+}
+
+.logoImageLogo{
+  width: 100%;
+
+}

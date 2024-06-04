@@ -1,20 +1,31 @@
-import React from 'react';
-import Card from '@/components/card/card'; // Assicurati che il percorso sia corretto
+// pages/page.js
+"use client";
+// pages/login.js
+import { useState } from 'react';
 
-const HomePage = () => {
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    // Qui puoi inserire la logica per gestire il login, ad esempio inviare la richiesta al server Node.js
+  };
+
   return (
-    <div className="row">
-      <div className="col-md-4">
-        <Card cardTitle="Card 1" cardText="Description for Card 1" />
-      </div>
-      <div className="col-md-4">
-        <Card cardTitle="Card 2" cardText="Description for Card 2" />
-      </div>
-      <div className="col-md-4">
-        <Card cardTitle="Card 3" cardText="Description for Card 3" />
-      </div>
+    <div>
+      <h1>Accesso</h1>
+      <form onSubmit={handleLogin}>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        </div>
+        <button type="submit">Accedi</button>
+      </form>
     </div>
   );
-};
-
-export default HomePage;
+}

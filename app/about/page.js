@@ -7,50 +7,55 @@ import styles from "./about.module.css";
 const About = () => {
   return (
     <div>
-      <div className={styles.welcome}>
-        <div>
-        <h1 className="me-5 h2">Ci Presentiamo</h1>
-        <p>siamo le colline umbre...</p>
-        </div>
-      <Image
-          src="/vigneto.png"
-          alt="vigneto"
-          layout="responsive"
-          width={2000}
-          height={1125}
-          className={styles.image}
-        />
-      </div>
-
-      <div className={styles.storia}>
-
-      <Image
-          src="/viticoltori.jpg"
-          alt="vigneto"
-          layout="responsive"
-          width={2000}
-          height={1125}
-          className={styles.image}
-        />
-
-
-        <div className="ms-5 ">
-        <h1 className="h2">La nostra storia</h1>
-        <p>
-          La Cantina "Colline Umbre" è nata dalla passione della famiglia Rossi
-          per la viticoltura e per il territorio umbro. Fondata nel 1980, la
-          cantina è cresciuta nel corso degli anni, mantenendo sempre un forte
-          legame con le tradizioni locali e un impegno costante per la qualità.
-        </p>
+      <div className={styles.welcomeContainer}>
+        <div className={styles.imageWelcomeContainer}>
+          <div className={styles.welcomeText}>
+            <h1 className="m-3 h1">Ci Presentiamo</h1>
+            <p>siamo le colline umbre...</p>
+          </div>
+          <Image
+            src="/vigneto.jpg"
+            alt="vigneto"
+            layout="responsive"
+            width={2000}
+            height={1125}
+            className={styles.imageWelcome}
+          />
         </div>
       </div>
 
+      {/* 
 
 
+      storia
 
 
-      <div className={styles.territorio} >
-        <h1 className="h2">Il Territorio</h1>
+    */}
+
+      <div className={styles.storiaContainer}>
+        <div className={styles.imageStoriaContainer}>
+          <Image
+            src="/viticoltori.jpg"
+            alt="vigneto"
+            layout="responsive"
+            width={2000}
+            height={1125}
+            className={styles.imageStoria}
+          />
+          <div className={styles.storiaText}>
+            <h1 className="m-3 h1">La nostra storia</h1>
+            <p>La Cantina "Colline Umbre" è nata dalla passione della famiglia
+            Rossi per la viticoltura e per il territorio umbro. Fondata nel
+            1980, la cantina è cresciuta nel corso degli anni, mantenendo sempre
+            un forte legame con le tradizioni locali e un impegno costante per
+            la qualità.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div className={styles.territorioContainer}>
+        <h1 className="h1 m-5">Il Territorio</h1>
         <p>
           I nostri vigneti si estendono su 50 ettari di terreno collinare, a
           un'altitudine compresa tra i 300 e i 400 metri sul livello del mare.
@@ -59,13 +64,14 @@ const About = () => {
           di vitigni autoctoni come il Sangiovese, il Grechetto e il Sagrantino.
         </p>
 
+      <div className={styles.imageIlTerritorioContainer}></div>
         <Image
-          src="/umbria.jpg"
+          src="/umbria.png"
           alt="vigneto"
           layout="responsive"
           width={2000}
           height={1125}
-          className={styles.image}
+          className={styles.imageIlTerritorio}
         />
       </div>
 

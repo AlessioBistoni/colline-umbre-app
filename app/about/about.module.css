@@ -1,40 +1,116 @@
-.welcome{
+.welcomeContainer{
+  height: 100vh; /* Imposta l'altezza della finestra del browser */
+  margin:auto;
   display: flex;
-  width: 100%;
-  height: auto;
-  padding-top: 120px;
-  padding-left: 100px;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 200px;
 
-}
 
-.storia {
-    
-    display: flex;
-    width: 100%;
-    height: auto;
-    padding-top: 200px;
-    padding-right: 100px;
-    align-items: center;
   
 }
 
-.territorio{
-
-
+.imageWelcomeContainer{
+  height: 80%; /* Imposta l'altezza della finestra del browser */
   width: 100%;
+  overflow: hidden; /* Nasconde l'eventuale parte eccedente dell'immagine */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  }
+
+
+.imageWelcome {
+  height: 100%;
+  width: auto;
+  object-fit: cover; /* Questo taglia l'immagine in larghezza se necessario */
+}
+
+.welcomeText{
+
+  width: 30%;
+  margin: 30px;
   height: auto;
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* storia */
+
+.storiaContainer{
+  height: 100vh; /* Imposta l'altezza della finestra del browser */
+  margin:auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  
+}
+
+.imageStoriaContainer{
+  height: 80%; /* Imposta l'altezza della finestra del browser */
+  width: 100%;
+  overflow: hidden; /* Nasconde l'eventuale parte eccedente dell'immagine */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  }
+
+
+.imageStoria {
+  height: 100%;
+  width: auto;
+  object-fit: cover; /* Questo taglia l'immagine in larghezza se necessario */
+}
+
+.storiaText{
+
+  width: 30%;
+  margin: 30px;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.territorioContainer{
+
   padding-top: 150px;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding-right: 400px;
+  padding-left: 400px;
   align-items: center;
 
 
 
 }
 
-.image {
-  width: 100px;
-  height: 10px;
+.imageIlTerritorioContainer{
+
+  padding-top: 100px;
 }
 
+.imageIlTerritorio{
+
+  border: 6px double black;
+}

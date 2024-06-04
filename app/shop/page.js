@@ -31,7 +31,7 @@ const ShopPage = () => {
         <div className="row">
           {wines.map((wine) => (
             <div key={wine.id} className="col-md-4">
-              <Card cardTitle={wine.name} cardAnno={wine.year}  cardTipo={wine.type} backgroundImage={wine.image}  />
+              <Card cardTitle={wine.name} cardAnno={wine.year}  cardTipo={wine.type} backgroundImage={wine.image} short_description={wine.short_description} long_description={wine.long_description}/>
             </div>
           ))}
         </div>
