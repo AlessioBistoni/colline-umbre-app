@@ -10,7 +10,7 @@
 .titoloDiBenvenuto {
   font-size: 3em;
   font-weight: bold;
-  color: #ffffff; /* Bianco panna */
+  color: #F5E7DE; /* Bianco panna */
 
 }
 
@@ -207,6 +207,7 @@
   .presentazioneVini{
     padding-left: 15px;
     padding-right: 15px;
+
   }
 }
 

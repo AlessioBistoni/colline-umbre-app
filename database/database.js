@@ -5,7 +5,7 @@ const path = require('path');
 
 async function openDB() {
   return open({
-    filename: path.resolve(__dirname, './wines.db'), // Percorso assoluto al database
+    filename: path.resolve(__dirname, './database.db'), // Percorso assoluto al database
     driver: sqlite3.Database
   });
 }

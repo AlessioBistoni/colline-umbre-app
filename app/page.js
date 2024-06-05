@@ -37,7 +37,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, scale: 1, y: 0 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: false }}
             className={styles.TestoDiIntroduzione}
           >
@@ -87,7 +87,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, scale: 1, y: 0 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: false }} 
             className={styles.presentazioneVini}>
             <h1 className="mx-5 h2">

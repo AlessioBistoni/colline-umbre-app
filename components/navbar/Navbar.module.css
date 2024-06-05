@@ -4,21 +4,21 @@
     background-color: rgb(255, 255, 255, 0.8);
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border-radius: 25px;
-    margin-left: -80px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 100px;
+
     list-style-type: none;
     font-size: 1.25rem;
     margin-top: 20px;
+    align-items: center;
 }
 
 .logoImageContainer{
-    width: 80px;
-    margin-left: 30px;
-    background-color: white;
+    width: 60px;
+    margin-right: 10px;
     border-radius: 100px;
-    opacity: 0.8;
+
 
 
 
