@@ -60,6 +60,8 @@ const ShopPage = () => {
                 {wines.map((wine) => (
                   <div key={wine.id} className="col-md-4">
                     <Card
+                      cardId={wine.id}
+                      userId={user.id}
                       cardTitle={wine.name}
                       cardPrice={wine.price}
                       cardAnno={wine.year}

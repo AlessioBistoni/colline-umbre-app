@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import AddToCartButton from "@/components/addToCartButton/addToCartButton"; // Assicurati che il percorso sia corretto
 
 const Card = ({
-  cardId, // Aggiungi cardId come prop
+  cardId,
   cardTitle,
   cardPrice,
   cardAnno,
@@ -10,33 +11,12 @@ const Card = ({
   backgroundImage,
   short_description,
   long_description,
+  userId,
 }) => {
   const [showLongDescription, setShowLongDescription] = useState(false);
 
   const toggleDescription = () => {
     setShowLongDescription(!showLongDescription);
-  };
-
-  const addToCart = async () => {
-    const userId = 1; // Dovresti ottenere l'ID dell'utente in qualche modo, magari dal contesto o dai props
-    try {
-      const response = await fetch('http://localhost:3001/api/add-to-cart', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userId, wineId: cardId }),
-      });
-
-      if (response.ok) {
-        alert(`Il vino "${cardTitle}" è stato aggiunto al carrello!`);
-      } else {
-        alert('Errore durante l\'aggiunta del vino al carrello.');
-      }
-    } catch (error) {
-      console.error('Errore:', error);
-      alert('Errore durante l\'aggiunta del vino al carrello.');
-    }
   };
 
   return (
@@ -65,14 +45,10 @@ const Card = ({
               className="btn btn-success mt-4"
               onClick={toggleDescription}
             >
+              
               {showLongDescription ? "nascondi informazioni" : "informazioni"}
             </button>
-            <button
-              className="btn btn-primary mt-4 ml-2"
-              onClick={addToCart}
-            >
-              Aggiungi al carrello
-            </button>
+            <AddToCartButton userId={userId} wineId={cardId} />
           </div>
         </div>
       </div>

@@ -5,9 +5,12 @@ const { openDB } = require('../database/database.js');
 const app = express();
 const port = 3001;
 
-app.use(cors());  // Abilita CORS per tutte le rotte
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));  // Abilita CORS per il dominio del frontend
 app.use(express.json());  // Middleware per gestire il parsing del JSON
 
+// Route per recuperare tutti i vini
 app.get('/api/wines', async (req, res) => {
   try {
     const db = await openDB();
@@ -36,33 +39,46 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// Nuova route per aggiungere un vino al carrello
-app.post('/api/add-to-cart', async (req, res) => {
+// Route per aggiungere un vino al carrello
+app.post('/api/addToCart', async (req, res) => {
   const { userId, wineId } = req.body;
 
   try {
     const db = await openDB();
-    await db.run('UPDATE users SET idWine = ? WHERE id = ?', [wineId, userId]);
-    res.status(200).json({ message: 'Vino aggiunto al carrello!' });
+    
+    // Controlla se il vino è già nel carrello
+    const existingItem = await db.get('SELECT * FROM cart WHERE user_id = ? AND wine_id = ?', [userId, wineId]);
+
+    if (existingItem) {
+      // Se è già presente, aggiorna la quantità
+      await db.run('UPDATE cart SET quantity = quantity + 1 WHERE user_id = ? AND wine_id = ?', [userId, wineId]);
+    } else {
+      // Se non è presente, inserisci una nuova voce nel carrello
+      await db.run('INSERT INTO cart (user_id, wine_id, quantity) VALUES (?, ?, ?)', [userId, wineId, 1]);
+    }
+    
+    res.status(200).json({ message: 'Vino aggiunto al carrello con successo' });
   } catch (error) {
-    res.status(500).json({ error: 'Errore durante l\'aggiunta del vino al carrello' });
+    console.error('Errore durante l\'aggiunta al carrello:', error);
+    res.status(500).json({ error: 'Errore durante l\'aggiunta al carrello' });
   }
 });
 
-// Nuova route per recuperare il carrello
-app.get('/api/cart', async (req, res) => {
-  const { userId } = req.query;
+// Route per recuperare gli elementi del carrello per un utente specifico
+app.get('/api/cart/:userId', async (req, res) => {
+  const { userId } = req.params;
 
   try {
     const db = await openDB();
     const cartItems = await db.all(`
-      SELECT wines.* FROM wines
-      JOIN users ON users.idWine = wines.id
-      WHERE users.id = ?
+      SELECT cart.id, wines.name, wines.price, cart.quantity 
+      FROM cart 
+      JOIN wines ON cart.wine_id = wines.id 
+      WHERE cart.user_id = ?
     `, [userId]);
-
     res.status(200).json(cartItems);
   } catch (error) {
+    console.error('Errore nel recupero del carrello:', error);
     res.status(500).json({ error: 'Errore nel recupero del carrello' });
   }
 });

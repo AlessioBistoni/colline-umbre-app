@@ -1,49 +1,44 @@
-"use client";import React, { useEffect, useState } from 'react';
-
+"use client";
+// pages/cart.js
+import React, { useState, useEffect } from 'react';
+import styles from './Carrello.module.css';
 const Cart = () => {
-  const userId = 2; // Imposta l'ID utente direttamente nel componente
   const [cartItems, setCartItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const userId = 1; // ID dell'utente, da sostituire con l'ID reale dell'utente loggato
 
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/cart?userId=${userId}`);
-        if (response.ok) {
-          const data = await response.json();
-          setCartItems(data);
-        } else {
-          console.error('Errore nel recupero del carrello');
+        const response = await fetch(`http://localhost:3001/api/cart/${userId}`);
+        if (!response.ok) {
+          throw new Error('Errore durante il recupero dei dati del carrello');
         }
+        const data = await response.json();
+        setCartItems(data);
       } catch (error) {
-        console.error('Errore:', error);
-      } finally {
-        setLoading(false);
+        console.error('Errore durante il recupero dei dati del carrello:', error.message);
       }
     };
 
     fetchCartItems();
-  }, [userId]);
-
-  if (loading) {
-    return <p>Caricamento...</p>;
-  }
+  }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Carrello</h1>
       {cartItems.length === 0 ? (
-        <p>Il carrello è vuoto.</p>
+        <p>Il carrello è vuoto</p>
       ) : (
         <ul>
           {cartItems.map(item => (
+          <div className={styles.scheda}>
             <li key={item.id}>
-              <h2>{item.cardTitle}</h2>
-              <p>{item.cardPrice}€</p>
-              <p>{item.cardAnno}</p>
-              <p>{item.cardTipo}</p>
-              <p>{item.short_description}</p>
+
+              <h1>{item.name}</h1>
+              <p>Prezzo: {item.price * item.quantity} €</p>
+              <p>Quantità: {item.quantity}</p>
             </li>
+          </div>
           ))}
         </ul>
       )}
