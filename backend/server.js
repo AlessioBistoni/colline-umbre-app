@@ -36,6 +36,37 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+// Nuova route per aggiungere un vino al carrello
+app.post('/api/add-to-cart', async (req, res) => {
+  const { userId, wineId } = req.body;
+
+  try {
+    const db = await openDB();
+    await db.run('UPDATE users SET idWine = ? WHERE id = ?', [wineId, userId]);
+    res.status(200).json({ message: 'Vino aggiunto al carrello!' });
+  } catch (error) {
+    res.status(500).json({ error: 'Errore durante l\'aggiunta del vino al carrello' });
+  }
+});
+
+// Nuova route per recuperare il carrello
+app.get('/api/cart', async (req, res) => {
+  const { userId } = req.query;
+
+  try {
+    const db = await openDB();
+    const cartItems = await db.all(`
+      SELECT wines.* FROM wines
+      JOIN users ON users.idWine = wines.id
+      WHERE users.id = ?
+    `, [userId]);
+
+    res.status(200).json(cartItems);
+  } catch (error) {
+    res.status(500).json({ error: 'Errore nel recupero del carrello' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

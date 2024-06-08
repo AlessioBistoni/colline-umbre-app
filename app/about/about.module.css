@@ -2,12 +2,22 @@
   height: 100vh; /* Imposta l'altezza della finestra del browser */
   margin:auto;
   display: flex;
+
   align-items: center;
   justify-content: center;
   margin-bottom: 200px;
+  padding-top: 50px;
 
+}
 
-  
+.welcomeText{
+
+  width: 400px;
+  margin: 30px;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .imageWelcomeContainer{
@@ -17,8 +27,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-
   }
 
 
@@ -26,29 +34,32 @@
   height: 100%;
   width: auto;
   object-fit: cover; /* Questo taglia l'immagine in larghezza se necessario */
+
 }
 
-.welcomeText{
 
-  width: 30%;
+
+/* storia */
+.storiaContainer{
+  height: 100vh; /* Imposta l'altezza della finestra del browser */
+  margin:auto;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+  padding-top: 50px;
+
+}
+
+.storiaText{
+
+  width: 400px;
   margin: 30px;
   height: auto;
   justify-content: center;
   align-items: center;
 
-}
-
-/* storia */
-
-.storiaContainer{
-  height: 100vh; /* Imposta l'altezza della finestra del browser */
-  margin:auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-
-  
 }
 
 .imageStoriaContainer{
@@ -58,8 +69,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-
   }
 
 
@@ -67,41 +76,15 @@
   height: 100%;
   width: auto;
   object-fit: cover; /* Questo taglia l'immagine in larghezza se necessario */
-}
-
-.storiaText{
-
-  width: 30%;
-  margin: 30px;
-  height: auto;
-  justify-content: center;
-  align-items: center;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .territorioContainer{
 
   padding-top: 150px;
-  padding-right: 400px;
-  padding-left: 400px;
+  margin: auto;
+  width: 60%;
   align-items: center;
-
-
 
 }
 
@@ -113,4 +96,42 @@
 .imageIlTerritorio{
 
   border: 6px double black;
+}
+
+@media only screen and (max-width: 768px) {
+
+  
+  .welcomeContainer{
+    padding-top: 300px;
+    display:block;
+    margin-bottom: 0px;
+  }
+  
+  .welcomeText{
+    margin:auto;
+    width: 80%;
+    text-align: center;
+  }
+
+  .storiaContainer{
+    padding-top: 0px;
+    display:block;
+  }
+  
+  .storiaText{
+    margin:auto;
+    width: 80%;
+
+    text-align: center;
+  }
+  
+  .territorioContainer{
+
+
+    padding-top: 0px;
+    width: 80%;
+    text-align: center;
+
+  
+  }
 }

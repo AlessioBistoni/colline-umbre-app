@@ -1,0 +1,44 @@
+.container {
+
+  height: 100vh;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.accesso {
+  
+  justify-content: end;
+  justify-items: end;
+
+  width: 400px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: auto;
+  background-color: #e8d8d0;
+}
+.email {
+  padding: 10px;
+}
+
+.password {
+  margin-left: -20px;
+  padding: 10px;
+
+} 
+
+.descrizione {
+  padding: 20px;
+  text-align: justify;
+}
+
+
+
+.logout{
+  margin-top: 100px;
+  text-align: center;
+}

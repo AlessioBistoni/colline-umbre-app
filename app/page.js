@@ -3,12 +3,13 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { motion } from "framer-motion";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import Footer from "@/components/footer/footer.js";
 
 export default function Home() {
   
   return (
     <div>
-      <Parallax pages={7}>
+      <Parallax pages={6.5}>
         <ParallaxLayer speed={0} offset={0}>
           <motion.div 
           initial={{ opacity: 0, scale: 1, y: 0 }}
@@ -28,6 +29,7 @@ export default function Home() {
         </ParallaxLayer>
         <ParallaxLayer speed={0.2} offset={0}>
           <div className={styles.scrittaDiBenvenuto}>
+
             <h1 className={styles.titoloDiBenvenuto}>Benvenuti nella nostra cantina!</h1>
           </div>
         </ParallaxLayer>
@@ -91,7 +93,6 @@ export default function Home() {
             viewport={{ once: false }} 
             className={styles.presentazioneVini}>
             <h1 className="mx-5 h2">
-              {" "}
               Esplora l'Eccezionale Mondo dei Vini Umbri
             </h1>
             <p>
@@ -180,6 +181,10 @@ export default function Home() {
               </div>
             </ParallaxLayer>
           </div>
+        </ParallaxLayer>
+
+        <ParallaxLayer speed={0} offset={6.15}>
+        <Footer />
         </ParallaxLayer>
 
       </Parallax>

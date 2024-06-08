@@ -1,52 +1,205 @@
-// pages/about.js
-"use client";
+'use client';
 
-import React from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+import styles from './Contacts.module.css';
 
-const About = () => {
-    return (
-        <div className="container mt-5">
-            <div className="row">
-                <div className="col-12 text-center mb-4">
-                    <h1>Il Nostro Team</h1>
-                </div>
-                <div className="col-12">
-                    <p>
-                    La Cantina "Colline Umbre" è gestita dalla famiglia Rossi, che porta avanti con dedizione e competenza la tradizione vitivinicola umbra. Il nostro team è composto da esperti agronomi, enologi e appassionati del settore, uniti dall'obiettivo comune di produrre vini di eccellenza e di diffondere la bellezza e la cultura del vino umbro in tutto il mondo.
-                    </p>
+// Carica la mappa solo sul client-side
+const MapComponent = dynamic(() => import('@/components/map/MapComponent'), {
+  ssr: false,
+});
 
+const teamMembers = [
+  {
+    name: "Billeri Simone",
+    role: "Co-Founder",
+    email: "simone@cantineumbre.com",
+    phone: "+39 123 456 789",
+    linkedin: "https://www.instagram.com/francescoforse_/",
+    twitter: "https://x.com/Simone_Billeri",
+  },
+  {
+    name: "Alessio Bistoni",
+    role: "Co-Founder",
+    email: "alessio@cantineumbre.com",
+    phone: "+39 987 654 321",
+    linkedin: "https://www.instagram.com/marcomagari_/",
+    twitter: "https://x.com/BistoniAlessio",
+  },
+];
 
-                    <Image
-                        src="/images/your-image.jpg" // Sostituisci con il percorso effettivo della tua immagine
-                        alt="Cantina Cuvaison"
-                        className="img-fluid mt-4"
-                        width={800}
-                        height={600}
-                    />
-                </div>
-                <div className='col-12'>
-                    <h1>
-                        Contatti
-                    </h1>
-                    <p>
-                    Se desideri saperne di più sulla Cantina "Colline Umbre" o prenotare una visita, non esitare a contattarci. Siamo sempre disponibili per condividere la nostra passione e la nostra esperienza con te.
-                    </p>
+export default function Contacts() {
+  const [mapInitialized, setMapInitialized] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formError, setFormError] = useState('');
 
-                </div>
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-                <div className='col-12'>
-                    <h1>
-                        I Nostri Vini
-                    </h1>
-                    <p>
-                        Alla Cantina "Colline Umbre" produciamo una gamma di vini che riflettono la diversità e la ricchezza del nostro territorio. Dai vini rossi corposi e strutturati ai bianchi freschi e aromatici, ogni bottiglia racconta la storia e la passione che mettiamo in ogni fase della produzione. 
-                    </p>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormError('');
 
-                </div>
-            </div>
+    if (!formData.name || !formData.email || !formData.message) {
+      setFormError('All fields are required');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        alert('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      setFormError(error.message);
+    }
+  };
+
+  useEffect(() => {
+    // Inizializza la mappa solo se non è stata già inizializzata
+    if (!mapInitialized) {
+      setMapInitialized(true);
+    }
+  }, [mapInitialized]);
+
+  const socialIconStyles = {
+    transition: 'transform 0.3s ease',
+  };
+
+  const socialIconHoverStyles = {
+    transform: 'scale(1.2)',
+  };
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.contactDetails}>
+        <div className={styles.contactDetail}>
+          <img src="/icon/telefono.png" alt="Telefono" className={styles.contactIcon} />
+          <p>Telefono</p>
+          <p>123 4567890</p>
         </div>
-    );
-};
-
-export default About;
+        <div className={styles.contactDetail}>
+          <img src="/icon/mail.png" alt="Email" className={styles.contactIcon} />
+          <p>Email</p>
+          <p><a href="mailto:info@cantineumbre.it">info@cantineumbre.it</a></p>
+        </div>
+        <div className={styles.contactDetail}>
+          <img src="/icon/contatti.png" alt="Assistenza E-commerce" className={styles.contactIcon} />
+          <p>Assistenza E-commerce</p>
+          <p><a href="mailto:help@cantineumbre.it">help@cantineumbre.it</a></p>
+        </div>
+        <div className={styles.contactDetail}>
+          <img src="/icon/indirizzo.png" alt="Indirizzo" className={styles.contactIcon} />
+          <p>Indirizzo</p>
+          <p>Via Luigi Vanvitelli, 1 - 06123 <br />Perugia (PG)</p>
+        </div>
+      </div>
+      <div className={styles.mapContainer}>
+        {mapInitialized && <MapComponent />}
+      </div>
+      <div className={styles.schedeContatti}>
+        <div>
+          <h1>Il nostro team</h1>
+        </div>
+        <div className={styles.members}>
+          {teamMembers.map((member, index) => (
+            <div
+              key={index}
+              className={styles.card}
+            >
+              <h1>{member.name}</h1>
+              <h2>{member.role}</h2>
+              <p>Email: <a href={`mailto:${member.email}`}>{member.email}</a></p>
+              <p>Telefono: <a href={`tel:${member.phone}`}>{member.phone}</a></p>
+              <div className={styles.social}>
+                <a 
+                  href={member.linkedin} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={styles.socialIcon}
+                >
+                  <img 
+                    src="/icon/instagram.svg" 
+                    alt="Instagram" 
+                    width={24} 
+                    height={24} 
+                    style={socialIconStyles}
+                    onMouseOver={(e) => e.currentTarget.style.transform = socialIconHoverStyles.transform}
+                    onMouseOut={(e) => e.currentTarget.style.transform = 'none'}
+                  />
+                </a>
+                <a 
+                  href={member.twitter} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <img 
+                    src="/icon/twitter.svg" 
+                    alt="Twitter" 
+                    width={24} 
+                    height={24} 
+                    style={socialIconStyles}
+                    onMouseOver={(e) => e.currentTarget.style.transform = socialIconHoverStyles.transform}
+                    onMouseOut={(e) => e.currentTarget.style.transform = 'none'}
+                  />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h1>Contattaci per richiedere informazioni</h1>
+      </div>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <input
+          className={styles.input}
+          type="text"
+          name="name"
+          placeholder="Nome e Cognome"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className={styles.input}
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          class
+          Name={styles.input}
+          name="message"
+          placeholder="Messaggio"
+          value={formData.message}
+          onChange={handleChange}
+          required
+        />
+        <div className={styles.checkboxContainer}>
+          <label className={styles.checkboxLabel}>
+            <input type="checkbox" required />
+            <span> Acconsento al trattamento dei miei dati personali ai sensi degli artt. 13 e 14 GDPR (Reg. UE 679/2016).</span>
+          </label>
+        </div>
+        {formError && <p className={styles.error}>{formError}</p>}
+        <button className={styles.button} type="submit">Invia</button>
+      </form>
+    </div>
+  );
+}

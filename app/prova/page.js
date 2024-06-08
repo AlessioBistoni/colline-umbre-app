@@ -1,102 +1,35 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+"use client";
+import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
-export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [user, setUser] = useState(null); // Stato per memorizzare le informazioni dell'utente
-  const router = useRouter();
+const OtherComponent = () => {
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Controlla se esiste un cookie con le informazioni dell'utente
     const savedUser = Cookies.get('user');
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
   }, []);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:3001/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        // Memorizza le informazioni dell'utente nello stato e nei cookie
-        setUser(data.user);
-        Cookies.set('user', JSON.stringify(data.user), { expires: 1 }); // Imposta il cookie per 1 giorno
-        // Login riuscito, reindirizza l'utente alla dashboard o alla pagina desiderata
-        router.push('/prova');
-      } else {
-        setError(data.message || 'Errore durante il login');
-      }
-    } catch (error) {
-      console.error('Errore durante il login:', error);
-      setError('Errore durante il login');
-    }
-  };
-
   const handleLogout = () => {
-    // Rimuovi le informazioni dell'utente dallo stato e dai cookie
     setUser(null);
     Cookies.remove('user');
-    router.push('/prova'); // Reindirizza alla pagina di login
+    window.location.href = '/prova'; // Reindirizza alla pagina di login
   };
 
   return (
     <div>
-      <h1>Accesso</h1>
-      <h1>Accesso</h1>
-      <h1>Accesso</h1>
-      <h1>Accesso</h1>
-      <h1>Accesso</h1>
-      <h1>Accesso</h1>
-      <h1>Accesso</h1>
-      <h1>Accesso</h1>
-      <h1>Accesso</h1>
-      {!user ? (
-        <>
-          <p>Accedi per visualizzare il contenuto protetto</p>
-          <form onSubmit={handleLogin}>
-            <div>
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <button type="submit">Accedi</button>
-          </form>
-        </>
-      ) : (
+      {user ? (
         <div>
-          <h2>Benvenuto, {user.nome} {user.cognome}!</h2>
+          <h2>Benvenuto, {user.nome}!</h2>
           <button onClick={handleLogout}>Logout</button>
         </div>
+      ) : (
+        <p>Effettua il login per continuare.</p>
       )}
     </div>
   );
-}
+};
+
+export default OtherComponent;

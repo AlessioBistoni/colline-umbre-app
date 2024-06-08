@@ -8,11 +8,11 @@ const About = () => {
   return (
     <div>
       <div className={styles.welcomeContainer}>
-        <div className={styles.imageWelcomeContainer}>
           <div className={styles.welcomeText}>
-            <h1 className="m-3 h1">Ci Presentiamo</h1>
-            <p>siamo le colline umbre...</p>
+            <h1 className="h1">Ci Presentiamo</h1>
+            <p>La Cantina Colline Umbre è situata nel cuore dell'Umbria, una regione rinomata per le sue colline ondulate e la tradizione vinicola secolare. Qui, la nostra missione è produrre vini di alta qualità che rispecchino l'essenza del nostro territorio e la passione per la viticoltura.</p>
           </div>
+        <div className={styles.imageWelcomeContainer}>
           <Image
             src="/vigneto.jpg"
             alt="vigneto"
@@ -31,7 +31,6 @@ const About = () => {
 
 
     */}
-
       <div className={styles.storiaContainer}>
         <div className={styles.imageStoriaContainer}>
           <Image
@@ -42,6 +41,7 @@ const About = () => {
             height={1125}
             className={styles.imageStoria}
           />
+        </div>
           <div className={styles.storiaText}>
             <h1 className="m-3 h1">La nostra storia</h1>
             <p>La Cantina "Colline Umbre" è nata dalla passione della famiglia
@@ -50,12 +50,12 @@ const About = () => {
             un forte legame con le tradizioni locali e un impegno costante per
             la qualità.</p>
           </div>
-        </div>
+
       </div>
 
 
       <div className={styles.territorioContainer}>
-        <h1 className="h1 m-5">Il Territorio</h1>
+        <h1 className="h1 m-3">Il Territorio</h1>
         <p>
           I nostri vigneti si estendono su 50 ettari di terreno collinare, a
           un'altitudine compresa tra i 300 e i 400 metri sul livello del mare.
@@ -63,6 +63,8 @@ const About = () => {
           suolo ricco di minerali, crea le condizioni ideali per la coltivazione
           di vitigni autoctoni come il Sangiovese, il Grechetto e il Sagrantino.
         </p>
+
+
 
       <div className={styles.imageIlTerritorioContainer}></div>
         <Image
@@ -75,16 +77,16 @@ const About = () => {
         />
       </div>
 
-      <div>
-        <h1>I Nostri Vini</h1>
-        <p>
-          Alla Cantina "Colline Umbre" produciamo una gamma di vini che
-          riflettono la diversità e la ricchezza del nostro territorio. Dai vini
-          rossi corposi e strutturati ai bianchi freschi e aromatici, ogni
-          bottiglia racconta la storia e la passione che mettiamo in ogni fase
-          della produzione.
-        </p>
+      <div className={styles.territorioContainer}>
+        <h1 className="mb-5">il nostro metodo</h1>
+        <h2>Agricoltura Biologica</h2>
+        <p>Coltiviamo le nostre viti senza l'uso di pesticidi chimici o fertilizzanti sintetici. Crediamo nella biodiversità e nel mantenimento dell'ecosistema naturale.</p>
+        <h2>Sostenibilità</h2>
+        <p>Utilizziamo tecniche di agricoltura sostenibile per preservare la fertilità del suolo e ridurre l'impatto ambientale. Compostiamo i residui vegetali e minimizziamo l'uso dell'acqua attraverso pratiche di irrigazione efficienti.</p>
+        
       </div>
+
+      
     </div>
   );
 };

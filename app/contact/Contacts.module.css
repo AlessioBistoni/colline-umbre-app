@@ -1,0 +1,161 @@
+.container {
+  padding: 20px;
+  width: 60%;
+  padding-top: 200px;
+  margin: auto;
+  position: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.contactDetails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: #e8d8d0;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.contactDetail {
+  text-align: center;
+  flex: 1 1 200px;
+  margin: 10px;
+}
+
+.contactIcon {
+  display: block;
+  margin: 0 auto 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.mapContainer {
+  position: center;
+  width: 100%;
+  height: 800px;
+  margin-bottom: 200px;
+  margin-top: 100px;
+
+}
+
+
+
+
+
+.members {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #F6E6DE;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin-top: 100px;
+
+}
+
+.schedeContatti {
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  border-radius: 6px;
+ background-color: #e8d8d0;
+}
+
+
+.image {
+  border-radius: 50%;
+}
+
+.social {
+  margin-top: 10px;
+}
+
+.socialIcon {
+  margin-right: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 300px;
+  margin-bottom: 200px;
+
+}
+
+.input {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #0070f3;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.checkboxContainer {
+  margin-bottom: 10px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+}
+
+.recaptcha {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .contactDetails {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contactDetail {
+    margin-bottom: 20px;
+  }
+
+  .members {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .form {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .container {
+    width: 100%;
+  }
+}

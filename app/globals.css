@@ -1,5 +1,7 @@
 /* Importa il font Playfair Display da Google Fonts */
 @import 'bootstrap/dist/css/bootstrap.css';
+
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
 /* Applica uno sfondo color bianco panna a tutto il documento */
@@ -9,7 +11,7 @@ body {
 }
 
 /* Stile per tutti gli elementi h1-h6 */
-h1, h2, h3, h4, h5, h6, p, link, ul {
+h1, h2, h3, h4, h5, h6, p, link, ul, label {
   font-family: 'Playfair Display', serif;
   color: #333; /* Colore del testo */
   margin: 0 0 15px;
