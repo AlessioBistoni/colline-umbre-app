@@ -1,8 +1,11 @@
 // components/Bottone.js
 import React, { useState } from 'react';
+import Image from "next/image";
+import styles from './addToCart.module.css';
 
 const Bottone = ({ userId, wineId }) => {
-  const [message, setMessage] = useState('');
+//   const [message, setMessage] = useState('');
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleClick = async () => {
     try {
@@ -16,17 +19,47 @@ const Bottone = ({ userId, wineId }) => {
       if (!response.ok) {
         throw new Error('Errore durante l aggiunta al carrello');
       }
-      setMessage('Vino aggiunto al carrello con successo');
+
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 2000);
+
     } catch (error) {
       console.error('Errore durante l aggiunta al carrello:', error.message);
-      setMessage('luser id è: ' + userId + ' e il wine id è: ' + wineId);
+
     }
   };
 
   return (
-    <div>
-      <button onClick={handleClick}>Aggiungi al carrello</button>
-      <p>{message}</p>
+    <div >
+      <button className={`${styles.cartIcon} btn btn-success`} onClick={handleClick}>
+
+      
+        {showMessage ? (
+        <Image
+        src="/icon/ok.png"
+        alt="cerrllo"
+        width={32}
+        height={32}
+        className={styles.cartIcon}
+      />
+
+      ):(
+      
+        <Image
+        src="/icon/cart.png"
+        alt="cerrllo"
+        width={32}
+        height={32}
+        className={styles.cartIcon}
+      />
+
+      )}
+        
+
+      </button>
+      
     </div>
   );
 };

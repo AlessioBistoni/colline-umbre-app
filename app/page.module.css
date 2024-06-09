@@ -33,54 +33,66 @@
 }
 
 .TestoDiIntroduzione {
+  margin: auto;
+  width: 60%;
 
-  padding-left: 400px;
-  padding-right: 400px;
-  padding-top: 0px;
-  padding-bottom: 0px;
 
   
 }
 
 .imageIntroduzioneContainer{
-  height: 1000px; /* Imposta l'altezza della finestra del browser */
+  position: relative;
+  height: 100vh; /* Imposta l'altezza della finestra del browser */
   overflow: hidden; /* Nasconde l'eventuale parte eccedente dell'immagine */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* background-color: aqua; */
+
+
+
+  
   }
 
 
 .imageIntroduzione {
   padding-left: 10%;
   padding-right: 10%;
-  min-width: 100%; /* Imposta la larghezza minima */
-  min-height: 100%; /* Imposta l'altezza minima */
-  
+  /* padding: 100px; */
 
+  min-height: 100%; /* Imposta l'altezza minima */
   object-fit: cover; /* Copre l'intero contenitore e taglia i lati se necessario */
   object-position: center; /* Centra l'immagine all'interno del contenitore */
+  position: absolute;
 }
 
 /* gli spacer sono delle porzioni dello stesso colore dello sfondo utilizzate nell'effetto parallasse dell'immagine di introduzione per nascondere il pezzo superiore e inferiore dell'immagine */
 .spacerstart {
-  height: 300px;
+
+  position: absolute;
+  top: 0cm;
+  height: 20%;
+  width: 100%;
   background-color: #F5E7DE; /* Bianco panna */
 }
 .spacerend {
-  margin-top: 1000px;
-  height: 700px;
+
+  position: absolute;
+  bottom: 0px;
+  height: 20%;
+  width: 100%;
   background-color: #F5E7DE; /* Bianco panna */
+
 }
 
 .presentazioneVini{
 
   display: flex;
   align-items: flex-end;
-  padding-left: 400px;
-  padding-right: 400px;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  margin: auto;
+  width: 60%;
+
 
 
 }
@@ -105,7 +117,7 @@
   top: 50%;
   transform: translateY(-50%);
   margin: auto;
-  padding: 0px;
+
 }
 
 .vinoBiancoDescrizione{
@@ -113,7 +125,7 @@
   top: 50%;
   left:50%;
   transform: translateY(-50%);
-  padding: 0px;
+
 }
 
 .vinoRossoImageContainer{
@@ -124,7 +136,7 @@
   top: 50%;
   transform: translateY(-50%);
   margin: auto;
-  padding: 0px;
+
   left:50%
 }
 
@@ -133,7 +145,7 @@
   top: 50%;
   right:50%;
   transform: translateY(-50%);
-  padding: 0px;
+
 }
 
 .imageVino {
@@ -143,125 +155,77 @@
 
 
 
-
-
-@media only screen and (max-width: 1440px) {
-  .TestoDiIntroduzione {
-
-    padding-left: 300px;
-    padding-right: 300px;
-  }
-
-  .presentazioneVini{
-    padding-left: 300px;
-    padding-right: 300px;
-  }
-}
-
-@media only screen and (max-width: 1280px) {
-  .TestoDiIntroduzione {
-
-    padding-left: 200px;
-    padding-right: 200px;
-  }
-
-  .presentazioneVini{
-    padding-left: 200px;
-    padding-right: 200px;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .TestoDiIntroduzione {
-
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .presentazioneVini{
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-
 @media only screen and (max-width: 768px) {
   .TestoDiIntroduzione {
     
-    padding-left: 20px;
-    padding-right: 20px;
+  margin: auto;
+  width: 90%;
   }
 
   .presentazioneVini{
     display: block;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin: auto;
+    width: 75%;
   }
 
   .vinoContainer{
     position: relative;
     width: 90%;
     height: 1000px;
-  
     margin:auto;
+
+  }
+  .spacerstart {
+    display: none;
+
+  }
+  .spacerend {
+    display: none;
+
   }
 
+  .imageIntroduzioneContainer{
+    height: 600px; /* Imposta l'altezza della finestra del browser */
+
+    
+    }
+
+  .imageIntroduzione {
+
+
+    min-width: 50%; /* Imposta la larghezza minima */
+    min-height: 50%; /* Imposta l'altezza minima */
+
+  }
   .vinoBiancoImageContainer{
     width: 20%; /* per prendere la metà sinistra dello schermo */
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: auto;
-    padding: 0px;
+
   }
 
   .vinoBiancoDescrizione{
-    position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translateY(-50%);
-    padding: 0px;
+
+    left:30%;
+
+  }
+
+  .vinoRossoImageContainer{
+    width: 20%; /* per prendere la metà sinistra dello schermo */
+
+    left:80%
   }
   
-}
+  .vinoRossoDescrizione{
 
-@media only screen and (max-width: 600px) {
-  .TestoDiIntroduzione {
-
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  .presentazioneVini{
-    padding-left: 15px;
-    padding-right: 15px;
+    right:30%;
 
   }
-}
 
-@media only screen and (max-width: 480px) {
-  .TestoDiIntroduzione {
+  .scrittaDiBenvenuto {
 
-    padding-left: 10px;
-    padding-right: 10px;
+    top: 80%;
+
+
   }
-
-  .presentazioneVini{
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .TestoDiIntroduzione {
-
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-
-  .presentazioneVini{
-    padding-left: 5px;
-    padding-right: 5px;
-  }
+  
+  
 }

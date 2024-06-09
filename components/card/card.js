@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import AddToCartButton from "@/components/addToCartButton/addToCartButton"; // Assicurati che il percorso sia corretto
+import Image from "next/image";
 
 const Card = ({
   cardId,
@@ -19,35 +20,51 @@ const Card = ({
     setShowLongDescription(!showLongDescription);
   };
 
+  const CardStyles = {
+    transition: "transform 0.3s ease",
+    boxShadow: "0 6px 10px rgba(0, 0, 0, 0.2)", // Opacità del colore dell'ombra aumentata a 0.3
+    borderRadius: "10px", // Bordo arrotondato
+  };
+
+  const CardHoverStyles = {
+    transform: "scale(1.05)",
+  };
+
   return (
-    <div>
+    <div
+      style={CardStyles}
+      onMouseOver={(e) =>
+        (e.currentTarget.style.transform = CardHoverStyles.transform)
+      }
+      onMouseOut={(e) => (e.currentTarget.style.transform = "none")}
+    >
       <div className="col-md-20 mb-3">
         <div className="card bg-light">
-          <img
-            src={backgroundImage}
-            className="card-img-top"
-            alt="immagine di un vino"
-          />
+          <div onClick={toggleDescription}>
+            <Image
+              src={backgroundImage}
+              alt="immagine di un vino"
+              layout="responsive"
+              width={1024}
+              height={1024}
+              className="card-img-top"
+            />
 
-          <div className="card-body">
-            <h1 className="card-title h2 mb-2">{cardTitle}</h1>
-            <h2 className="card-text h4 mb-4">{cardAnno}</h2>
-            {showLongDescription ? (
-              <h2 className="card-text h5 mb-4">{long_description}</h2>
-            ) : (
-              <h2 className="card-text h5 mb-4">{short_description}</h2>
-            )}
-            <div className="d-flex justify-content-between align-items-center mx-1">
-              <h3 className="card-title h4">{cardTipo}</h3>
-              <h4 className="card-text h4">{cardPrice}€</h4>
+            <div className="card-body">
+              <h1 className="card-title h2 mb-4">{cardTitle}</h1>
+
+              <h2 className="card-text h6">{cardTipo}</h2>
+              <h2 className="card-text h6 mb-4">{cardAnno}</h2>
+
+              {showLongDescription ? (
+                <h2 className="card-text h5 mb-4">{long_description}</h2>
+              ) : (
+                <h2 className="card-text h5 mb-4">{short_description}</h2>
+              )}
             </div>
-            <button
-              className="btn btn-success mt-4"
-              onClick={toggleDescription}
-            >
-              
-              {showLongDescription ? "nascondi informazioni" : "informazioni"}
-            </button>
+          </div>
+          <div className="d-flex justify-content-between align-items-center mx-3 mb-3">
+            <h2 className="card-text h4">{cardPrice}€</h2>
             <AddToCartButton userId={userId} wineId={cardId} />
           </div>
         </div>

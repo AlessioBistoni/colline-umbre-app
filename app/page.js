@@ -61,6 +61,8 @@ export default function Home() {
         {/* immagine di introduzione con la coppia a cui viene servito il vino */}
         <ParallaxLayer speed={0} offset={1.85}>
           <div className={styles.imageIntroduzioneContainer}>
+
+          
             <Image
               src="/intro.jpg"
               alt="Intro"
@@ -69,14 +71,15 @@ export default function Home() {
               height={1125}
               className={styles.imageIntroduzione}
             />
-          </div>
 
           <ParallaxLayer speed={0.1} offset={0}>
             <div className={styles.spacerstart}></div>
           </ParallaxLayer>
-          <ParallaxLayer speed={0.1} offset={0}>
+
+          <ParallaxLayer speed={0.1} offset={0.3}>
             <div className={styles.spacerend}></div>
           </ParallaxLayer>
+          </div>
         </ParallaxLayer>
 
 

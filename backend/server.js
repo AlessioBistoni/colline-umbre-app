@@ -83,6 +83,60 @@ app.get('/api/cart/:userId', async (req, res) => {
   }
 });
 
+app.post('/api/cart/increase', async (req, res) => {
+  const { userId, wineId } = req.body;
+
+  try {
+    const db = await openDB();
+    await db.run('UPDATE cart SET quantity = quantity + 1 WHERE user_id = ? AND wine_id = ?', [userId, wineId]);
+    res.status(200).json({ message: 'Quantità aumentata con successo' });
+  } catch (error) {
+    console.error('Errore durante l\'aggiornamento della quantità:', error);
+    res.status(500).json({ error: 'Errore durante l\'aggiornamento della quantità' });
+  }
+});
+
+// Route per diminuire la quantità di un vino nel carrello
+app.post('/api/cart/decrease', async (req, res) => {
+  const { userId, wineId } = req.body;
+
+  try {
+    const db = await openDB();
+    // Decrementa la quantità del vino nel carrello
+    await db.run('UPDATE cart SET quantity = quantity - 1 WHERE user_id = ? AND wine_id = ?', [userId, wineId]);
+
+    // Verifica se la quantità è diventata zero dopo il decremento
+    const checkZeroQuantity = await db.get('SELECT quantity FROM cart WHERE user_id = ? AND wine_id = ?', [userId, wineId]);
+
+    // Se la quantità è diventata zero, rimuovi il vino dal carrello
+    if (checkZeroQuantity.quantity === 0) {
+      await db.run('DELETE FROM cart WHERE user_id = ? AND wine_id = ?', [userId, wineId]);
+      res.status(200).json({ message: 'Vino rimosso dal carrello' });
+    } else {
+      res.status(200).json({ message: 'Quantità diminuita con successo' });
+    }
+  } catch (error) {
+    console.error('Errore durante la diminuzione della quantità:', error);
+    res.status(500).json({ error: 'Errore durante la diminuzione della quantità' });
+  }
+});
+
+app.post('/api/cart/remove', async (req, res) => {
+  const { userId, wineId } = req.body;
+
+  try {
+    const db = await openDB();
+    // Rimuove completamente l'elemento dal carrello
+    await db.run('DELETE FROM cart WHERE user_id = ? AND wine_id = ?', [userId, wineId]);
+
+    res.status(200).json({ message: 'Elemento rimosso dal carrello' });
+  } catch (error) {
+    console.error('Errore durante la rimozione dell\'elemento dal carrello:', error);
+    res.status(500).json({ error: 'Errore durante la rimozione dell\'elemento dal carrello' });
+  }
+});
+
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

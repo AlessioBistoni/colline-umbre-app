@@ -160,6 +160,8 @@ export default function Contacts() {
           ))}
         </div>
       </div>
+      
+      <div className={styles.formContainer}>
       <div>
         <h1>Contattaci per richiedere informazioni</h1>
       </div>
@@ -200,6 +202,7 @@ export default function Contacts() {
         {formError && <p className={styles.error}>{formError}</p>}
         <button className={styles.button} type="submit">Invia</button>
       </form>
+    </div>
     </div>
   );
 }

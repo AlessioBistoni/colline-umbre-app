@@ -47,10 +47,10 @@ const ShopPage = () => {
           <div className={styles.user}>
             <h1>Benvenuto, {user.nome}!</h1>
             {/* <MenuUtente /> */}
-            <a href="/carrello" className={styles.menuItem}>
-              <button className="btn btn-primary">Carrello</button>
+            <a href="/carrello" >
+              <button href="/carrello" className="btn btn-primary m-2">Carrello</button>
             </a>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} className="btn btn-primary m-2">Logout</button>
           </div>
           <div className={styles.vini}>
             <h1 className="text-center">i nostri vini</h1>
