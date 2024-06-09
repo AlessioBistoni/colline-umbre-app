@@ -14,6 +14,7 @@ const Cart = () => {
           throw new Error('Errore durante il recupero dei dati del carrello');
         }
         const data = await response.json();
+        console.log(data);
         setCartItems(data);
       } catch (error) {
         console.error('Errore durante il recupero dei dati del carrello:', error.message);
@@ -36,7 +37,7 @@ const Cart = () => {
         throw new Error('Errore durante l\'aumento della quantità');
       }
       const updatedCartItems = cartItems.map(item =>
-        item.id === wineId ? { ...item, quantity: item.quantity + 1 } : item
+        item.wine_id === wineId ? { ...item, quantity: item.quantity + 1 } : item
       );
       setCartItems(updatedCartItems);
     } catch (error) {
@@ -57,7 +58,7 @@ const Cart = () => {
         throw new Error('Errore durante la diminuzione della quantità');
       }
       const updatedCartItems = cartItems.map(item =>
-        item.id === wineId ? { ...item, quantity: item.quantity - 1 } : item
+        item.wine_id === wineId ? { ...item, quantity: item.quantity - 1 } : item
       ).filter(item => item.quantity > 0); // Rimuovi l'elemento se la quantità è 0
       setCartItems(updatedCartItems);
     } catch (error) {
@@ -77,7 +78,7 @@ const Cart = () => {
       if (!response.ok) {
         throw new Error('Errore durante la rimozione del prodotto dal carrello');
       }
-      const updatedCartItems = cartItems.filter(item => item.id !== wineId);
+      const updatedCartItems = cartItems.filter(item => item.wine_id !== wineId);
       setCartItems(updatedCartItems);
     } catch (error) {
       console.error('Errore durante la rimozione del prodotto dal carrello:', error.message);
@@ -97,9 +98,11 @@ const Cart = () => {
                 <h1>{item.name}</h1>
                 <p>Prezzo: {item.price * item.quantity} €</p>
                 <p>Quantità: {item.quantity}</p>
-                <button onClick={() => handleIncreaseQuantity(item.id)}>Aumenta</button>
-                <button onClick={() => handleDecreaseQuantity(item.id)}>Diminuisci</button>
-                <button onClick={() => handleRemoveItem(item.id)}>Rimuovi</button>
+
+                
+                <button onClick={() => handleIncreaseQuantity(item.wine_id)}>Aumenta</button>
+                <button onClick={() => handleDecreaseQuantity(item.wine_id)}>Diminuisci</button>
+                <button onClick={() => handleRemoveItem(item.wine_id)}>Rimuovi</button>
               </li>
             </div>
           ))}

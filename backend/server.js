@@ -51,9 +51,11 @@ app.post('/api/addToCart', async (req, res) => {
 
     if (existingItem) {
       // Se è già presente, aggiorna la quantità
+      console.log('existingItem', existingItem);
       await db.run('UPDATE cart SET quantity = quantity + 1 WHERE user_id = ? AND wine_id = ?', [userId, wineId]);
     } else {
       // Se non è presente, inserisci una nuova voce nel carrello
+      console.log('non esiste nel carrello', existingItem);
       await db.run('INSERT INTO cart (user_id, wine_id, quantity) VALUES (?, ?, ?)', [userId, wineId, 1]);
     }
     
@@ -71,11 +73,12 @@ app.get('/api/cart/:userId', async (req, res) => {
   try {
     const db = await openDB();
     const cartItems = await db.all(`
-      SELECT cart.id, wines.name, wines.price, cart.quantity 
-      FROM cart 
-      JOIN wines ON cart.wine_id = wines.id 
-      WHERE cart.user_id = ?
+    SELECT cart.id, wines.id AS wine_id, wines.name, wines.price, cart.quantity 
+    FROM cart 
+    JOIN wines ON cart.wine_id = wines.id 
+    WHERE cart.user_id = ?;
     `, [userId]);
+    console.log('cartItems', cartItems);
     res.status(200).json(cartItems);
   } catch (error) {
     console.error('Errore nel recupero del carrello:', error);
@@ -88,9 +91,13 @@ app.post('/api/cart/increase', async (req, res) => {
 
   try {
     const db = await openDB();
+    const quantity = await db.get('SELECT cart.quantity FROM cart WHERE user_id = ? AND wine_id = ?', [userId, wineId]);
+    console.log('quantity', quantity);
     await db.run('UPDATE cart SET quantity = quantity + 1 WHERE user_id = ? AND wine_id = ?', [userId, wineId]);
+    console.log('quantità aumentata con successo')
     res.status(200).json({ message: 'Quantità aumentata con successo' });
   } catch (error) {
+    console.log('Errore durante l\'aggiornamento della quantità:', error)
     console.error('Errore durante l\'aggiornamento della quantità:', error);
     res.status(500).json({ error: 'Errore durante l\'aggiornamento della quantità' });
   }
@@ -111,12 +118,18 @@ app.post('/api/cart/decrease', async (req, res) => {
     // Se la quantità è diventata zero, rimuovi il vino dal carrello
     if (checkZeroQuantity.quantity === 0) {
       await db.run('DELETE FROM cart WHERE user_id = ? AND wine_id = ?', [userId, wineId]);
+      console.log('vino rimosso dal carrello')
       res.status(200).json({ message: 'Vino rimosso dal carrello' });
     } else {
+      console.log('quantità diminuita con successo')
       res.status(200).json({ message: 'Quantità diminuita con successo' });
     }
   } catch (error) {
     console.error('Errore durante la diminuzione della quantità:', error);
+    console.error('user id ', userId);
+    console.error('wine id ', wineId);
+    
+
     res.status(500).json({ error: 'Errore durante la diminuzione della quantità' });
   }
 });

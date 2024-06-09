@@ -16,9 +16,8 @@ const Navbar = () => {
         <Image
               src="/logo.png"
               alt="logo"
-              layout="responsive"
-              width={100}
-              height={100}
+              width={50}
+              height={50}
               className={styles.imageLogo}
             />
         </div>
