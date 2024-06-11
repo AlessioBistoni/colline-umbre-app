@@ -1,17 +1,27 @@
 .scrittaDiBenvenuto {
   position: absolute;
   text-align: center;
-  top: 90%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
+  width: 100%;
+  top: 80%;
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 50px 50px rgba(0, 0, 0, 0.3); /* Ombra sfocata per bordi */
+  border-radius: 10px; /* Per bordi arrotondati */
+  padding: 20px;
+  
 }
 
 .titoloDiBenvenuto {
   font-size: 3em;
   font-weight: bold;
   color: #F5E7DE; /* Bianco panna */
+  
+}
 
+.sottotitoloDiBenvenuto {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #F5E7DE; /* Bianco panna */
+  
 }
 
 .imageWelcomeContainer{
@@ -43,24 +53,22 @@
 .imageIntroduzioneContainer{
   position: relative;
   height: 100vh; /* Imposta l'altezza della finestra del browser */
+  width: 80vw;
+  margin-inline: auto;
   overflow: hidden; /* Nasconde l'eventuale parte eccedente dell'immagine */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-color: aqua; */
 
-
-
-  
   }
 
 
 .imageIntroduzione {
   padding-left: 10%;
   padding-right: 10%;
-  /* padding: 100px; */
-
+  width: auto;
+  height: auto;
   min-height: 100%; /* Imposta l'altezza minima */
   object-fit: cover; /* Copre l'intero contenitore e taglia i lati se necessario */
   object-position: center; /* Centra l'immagine all'interno del contenitore */
@@ -73,7 +81,7 @@
   position: absolute;
   top: 0cm;
   height: 20%;
-  width: 100%;
+  width: 110%;
   background-color: #F5E7DE; /* Bianco panna */
 }
 .spacerend {
@@ -81,7 +89,7 @@
   position: absolute;
   bottom: 0px;
   height: 20%;
-  width: 100%;
+  width: 110%;
   background-color: #F5E7DE; /* Bianco panna */
 
 }
@@ -105,8 +113,16 @@
   position: relative;
   width: 60%;
   height: 1000px;
+  
+  
 
   margin:auto;
+}
+
+.imageVino {
+  max-width: 150px;
+  height: auto  ;
+
 }
 
 .vinoBiancoImageContainer{
@@ -148,16 +164,28 @@
 
 }
 
-.imageVino {
-  max-width: 150px;
-  height: auto  ;
 
+
+
+.footerContainer{
+  position: absolute;
+  bottom: 50%;
+  height: 400px;
+  width: 100%;
 }
 
 
 
 
+
+
 @media only screen and (max-width: 768px) {
+
+  .scrittaDiBenvenuto {
+    
+    top: 60%;
+  }
+
   .TestoDiIntroduzione {
     
   margin: auto;
@@ -187,17 +215,22 @@
   }
 
   .imageIntroduzioneContainer{
-    height: 600px; /* Imposta l'altezza della finestra del browser */
+    height: 1000px; /* Imposta l'altezza della finestra del browser */
+    width: 98vw;
+    padding-left: 300px;
 
     
     }
+  
+    .imageIntroduzione{
+      margin-left: 100px;
+    }
 
-  .imageIntroduzione {
 
-
-    min-width: 50%; /* Imposta la larghezza minima */
-    min-height: 50%; /* Imposta l'altezza minima */
-
+  .imageVino {
+    max-width: 70px;
+    height: auto  ;
+  
   }
   .vinoBiancoImageContainer{
     width: 20%; /* per prendere la metà sinistra dello schermo */
@@ -222,12 +255,86 @@
 
   }
 
-  .scrittaDiBenvenuto {
 
-    top: 80%;
+  
+  
+}
 
 
+@media only screen and (max-height: 900px) {
+
+  .imageIntroduzioneContainer{
+    margin-top: 100px; /* Imposta l'altezza della finestra del browser */
+    height: 800px; /* Imposta l'altezza della finestra del browser */
+    }
+}
+
+
+@media only screen and (max-height: 800px) {
+
+    .imageIntroduzioneContainer{
+
+    height: 700px; /* Imposta l'altezza della finestra del browser */
+    }
   }
+
+@media only screen and (max-height: 700px) {
+
+    .imageIntroduzioneContainer{
+
+    height: 600px; /* Imposta l'altezza della finestra del browser */
+    }
   
+}
+@media only screen and (max-height: 600px) {
+
+  .imageIntroduzioneContainer{
+    display: none;
+    }
+
+    .spacerstart {
+      display: none;
   
+    }
+    .spacerend {
+      display: none;
+  
+    }
+
+    .vinoBiancoImageContainer
+    {display: none;}
+
+    .vinoRossoImageContainer
+    {display: none;}
+
+
+
+    .presentazioneVini{
+      width: 90%;
+      margin-top: -150px;
+
+    }
+
+    .vinoBiancoDescrizione{
+
+      left:0%;
+  
+    }
+
+    .vinoRossoDescrizione{
+
+      left:0%;
+      width: 100%;
+  
+    }
+    .spacerstart {
+      display: none;
+  
+    }
+    .spacerend {
+      display: none;
+  
+    }
+
+
 }

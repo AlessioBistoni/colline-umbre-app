@@ -15,13 +15,6 @@ const Navbar = () => {
     <nav className={styles.barraContainer}>
 
         <div className={styles.barraPiccola} >
-        <Image
-                src="/logo.png"
-                alt="logo"
-                width={50}
-                height={50}
-                className={styles.imageLogo}
-              />
           
           <button className={styles.bottoneMenu} onClick={toggleDropdown}>
             Menu
@@ -64,6 +57,7 @@ const Navbar = () => {
                 alt="logo"
                 width={50}
                 height={50}
+                priority={true}
                 className={styles.imageLogo}
               />
             </div>

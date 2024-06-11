@@ -32,7 +32,7 @@
 
 .imageWelcome {
   height: 100%;
-  width: auto;
+  width: 100%;
   object-fit: cover; /* Questo taglia l'immagine in larghezza se necessario */
 
 }
@@ -74,10 +74,30 @@
 
 .imageStoria {
   height: 100%;
-  width: auto;
+  width: 100%;
   object-fit: cover; /* Questo taglia l'immagine in larghezza se necessario */
 
 }
+
+.metodoContainer{
+  background-color: #e8d8d0;
+  text-align: start;
+  margin-top: 300px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-inline: auto;
+  width: 60%;
+  padding-inline: 10%;
+  align-items: center;
+  
+
+}
+
+.listaMetodo{
+  list-style: none;
+  margin-top: 100px;
+}
+
 
 .territorioContainer{
 
@@ -85,18 +105,19 @@
   margin: auto;
   width: 60%;
   align-items: center;
+  margin-bottom: 400px;
 
 }
 
-.imageIlTerritorioContainer{
 
-  padding-top: 100px;
-}
 
 .imageIlTerritorio{
-
+  height: 100%;
+  width: 100%;
+  margin-top: 100px;
   border: 6px double black;
 }
+
 
 @media only screen and (max-width: 768px) {
 
@@ -134,4 +155,13 @@
 
   
   }
+
+
+.metodoContainer{
+
+  padding-inline: 5%;
+  width: 90%;
+
+
+}
 }

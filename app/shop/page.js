@@ -41,7 +41,7 @@ const ShopPage = () => {
   return (
     <div>
       {user ? (
-        <div>
+        <div className={styles.container}>
 
           <div className={styles.userContainer}>
           <div className={styles.user}>

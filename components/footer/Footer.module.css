@@ -1,7 +1,7 @@
 /* footer.css */
 
 .footer {
-  margin-top: 200px;
+
   padding-top: 100px;
   display: flex;
   flex-direction: column;
@@ -10,6 +10,8 @@
   text-align: center;
   height: 400px; /* Imposta l'altezza del footer */
   background-color: rgba(0, 0, 0, 0.817);
+
+
 
 }
 

@@ -2,11 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Carrello.module.css';
 import Footer from "@/components/footer/footer.js";
+import Cookies from 'js-cookie';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
-  const userId = 1; // ID dell'utente, da sostituire con l'ID reale dell'utente loggato
-
+  // const userId = 1;
+  const userId = Cookies.get('user') ? JSON.parse(Cookies.get('user')).id : null;
+  console.log(userId);
+  let totale = 0;
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
@@ -15,7 +18,6 @@ const Cart = () => {
           throw new Error('Errore durante il recupero dei dati del carrello');
         }
         const data = await response.json();
-        console.log(data);
         setCartItems(data);
       } catch (error) {
         console.error('Errore durante il recupero dei dati del carrello:', error.message);
@@ -104,17 +106,20 @@ const Cart = () => {
                 <p>Prezzo: {item.price * item.quantity} €</p>
                 <p>Quantità: {item.quantity}</p>
 
+                <script>{totale += item.price * item.quantity}</script>
                 
-                <button onClick={() => handleIncreaseQuantity(item.wine_id)}>Aumenta</button>
-                <button onClick={() => handleDecreaseQuantity(item.wine_id)}>Diminuisci</button>
-                <button onClick={() => handleRemoveItem(item.wine_id)}>Rimuovi</button>
+                <button className="btn btn-primary m-2" onClick={() => handleIncreaseQuantity(item.wine_id)}>Aumenta</button>
+                <button className="btn btn-primary m-2" onClick={() => handleDecreaseQuantity(item.wine_id)}>Diminuisci</button>
+                <button className="btn btn-danger m-2" onClick={() => handleRemoveItem(item.wine_id)}>Rimuovi</button>
               </li>
             </div>
           ))}
         </ul>
 
-        
-        <p>il totale è </p>
+        <div className={styles.acquista}>
+        <h2>Il totale è {totale} € </h2>
+        <button className='btn btn-primary mb-3 ms-4'>Acquista</button>
+        </div>
         </div>
         
       )}

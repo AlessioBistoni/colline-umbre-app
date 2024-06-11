@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <div>
       <Parallax pages={6.6}>
+      <section id="sezione di apertura della pagina">
         <ParallaxLayer speed={0} offset={0}>
           <motion.div 
           initial={{ opacity: 0, scale: 1, y: 0 }}
@@ -28,12 +29,21 @@ export default function Home() {
           </motion.div>
         </ParallaxLayer>
         <ParallaxLayer speed={0.2} offset={0}>
-          <div className={styles.scrittaDiBenvenuto}>
+          <motion.div 
+          initial={{ opacity: 0, scale: 1, y: 0 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: false }}
+          className={styles.scrittaDiBenvenuto}>
 
             <h1 className={styles.titoloDiBenvenuto}>Benvenuti nella nostra cantina!</h1>
-          </div>
+            <blockquote className={styles.sottotitoloDiBenvenuto}>"Un bicchiere di vino delle Colline Umbre non è solo una bevanda, ma un'esperienza che racconta la storia della nostra terra e della nostra passione."</blockquote>
+          </motion.div>
         </ParallaxLayer>
+        </section>
 
+
+        <section id="introduzione alla pagina">
         {/* scritta benvenuti della cantina colline umbre, funziona da introduzione al sito */}
         <ParallaxLayer speed={0} offset={1.45}>
           <motion.div
@@ -58,6 +68,7 @@ export default function Home() {
 
 
 
+
         {/* immagine di introduzione con la coppia a cui viene servito il vino */}
         <ParallaxLayer speed={0} offset={1.85}>
           <div className={styles.imageIntroduzioneContainer}>
@@ -66,7 +77,6 @@ export default function Home() {
             <Image
               src="/intro.jpg"
               alt="Intro"
-              layout="responsive"
               width={2000}
               height={1125}
               className={styles.imageIntroduzione}
@@ -81,12 +91,13 @@ export default function Home() {
           </ParallaxLayer>
           </div>
         </ParallaxLayer>
+        </section>
 
 
 
 
 
-
+        <section id="prodotti della pagina">
         {/* scritta esplora l'eccezionale mondo dei vini umbri e sottotitolo */}
         <ParallaxLayer speed={0} offset={3.1}>
           <motion.div
@@ -112,7 +123,7 @@ export default function Home() {
 
 
 
-
+        
         {/* container immagine vino bianco */}
         <ParallaxLayer speed={0} offset={3.7}>
           <div className={styles.vinoContainer}>
@@ -160,9 +171,9 @@ export default function Home() {
                   <Image
                     src="/rosso.png"
                     alt="Intro"
-                    layout="responsive"
                     width={841}
                     height={2901}
+                    className={styles.imageVino}
                   />
                 </div>
               </div>
@@ -185,9 +196,12 @@ export default function Home() {
             </ParallaxLayer>
           </div>
         </ParallaxLayer>
+        </section>
 
-        <ParallaxLayer speed={0} offset={6.02}>
+        <ParallaxLayer speed={0} offset={6.1}>
+        <div className={styles.footerContainer}>
         <Footer />
+        </div>
         </ParallaxLayer>
 
       </Parallax>

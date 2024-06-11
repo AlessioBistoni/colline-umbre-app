@@ -15,7 +15,7 @@ const teamMembers = [
   {
     name: "Billeri Simone",
     role: "Co-Founder",
-    email: "simone@cantineumbre.com",
+    email: "simone@collineumbre.com",
     phone: "+39 123 456 789",
     linkedin: "https://www.instagram.com/francescoforse_/",
     twitter: "https://x.com/Simone_Billeri",
@@ -23,7 +23,7 @@ const teamMembers = [
   {
     name: "Alessio Bistoni",
     role: "Co-Founder",
-    email: "alessio@cantineumbre.com",
+    email: "alessio@collineumbre.com",
     phone: "+39 987 654 321",
     linkedin: "https://www.instagram.com/marcomagari_/",
     twitter: "https://x.com/BistoniAlessio",
@@ -95,12 +95,12 @@ export default function Contacts() {
         <div className={styles.contactDetail}>
           <img src="/icon/mail.png" alt="Email" className={styles.contactIcon} />
           <p>Email</p>
-          <p><a href="mailto:info@cantineumbre.it">info@cantineumbre.it</a></p>
+          <p><a href="mailto:info@collineumbre.it">info@collineumbre.it</a></p>
         </div>
         <div className={styles.contactDetail}>
           <img src="/icon/contatti.png" alt="Assistenza E-commerce" className={styles.contactIcon} />
           <p>Assistenza E-commerce</p>
-          <p><a href="mailto:help@cantineumbre.it">help@cantineumbre.it</a></p>
+          <p><a href="mailto:help@collineumbre.it">help@collineumbre.it</a></p>
         </div>
         <div className={styles.contactDetail}>
           <img src="/icon/indirizzo.png" alt="Indirizzo" className={styles.contactIcon} />

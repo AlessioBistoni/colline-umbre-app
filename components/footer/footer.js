@@ -43,7 +43,7 @@ const Footer = () => {
             <p className="text-white">
               Mail:{" "}
               <a href="info@collineumbre.it" className="text-white">
-                info@ccollineumbre.it
+                info@collineumbre.it
               </a>
             </p>
           </div>
@@ -52,19 +52,19 @@ const Footer = () => {
           <div className="col text-center">
             <p className="text-white">
               &copy; Copyright 2024 CollineUmbre |{" "}
-              <a href="#" className="text-white">
-                Privacy Policy
+              <a href="/" className="text-white">
+                Home
               </a>{" "}
               |{" "}
-              <a href="#" className="text-white">
-                Trade
+              <a href="/about" className="text-white">
+                About
               </a>{" "}
               |{" "}
-              <a href="#" className="text-white">
-                Press
+              <a href="/contact" className="text-white">
+                Contact
               </a>{" "}
               |{" "}
-              <a href="#" className="text-white">
+              <a href="/shop" className="text-white">
                 Shop
               </a>{" "}
               |{" "}

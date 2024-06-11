@@ -1,8 +1,6 @@
 /* Importa il font Playfair Display da Google Fonts */
+
 @import 'bootstrap/dist/css/bootstrap.css';
-
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
 /* Applica uno sfondo color bianco panna a tutto il documento */
 html,
@@ -19,15 +17,15 @@ h1, h2, h3, h4, h5, h6, p, link, ul, label {
 
 /* Dimensioni specifiche per ogni heading */
 h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 h3 {
-  font-size: 1.75rem;
+  font-size: 2rem;
 }
 
 h4 {
@@ -40,6 +38,10 @@ h5 {
 
 h6 {
   font-size: 1rem;
+}
+
+p {
+  font-size: 1.25rem;
 }
 
 /* Media query per dispositivi con una larghezza massima di 768px (tablet) */
