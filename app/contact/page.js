@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import styles from './Contacts.module.css';
+import Footer from '@/components/footer/footer';
 
 // Carica la mappa solo sul client-side
 const MapComponent = dynamic(() => import('@/components/map/MapComponent'), {
@@ -48,7 +49,7 @@ export default function Contacts() {
     }
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('http://localhost:3001/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -83,6 +84,7 @@ export default function Contacts() {
   };
 
   return (
+    <div>
     <div className={styles.container}>
       <div className={styles.contactDetails}>
         <div className={styles.contactDetail}>
@@ -185,8 +187,7 @@ export default function Contacts() {
           required
         />
         <textarea
-          class
-          Name={styles.input}
+          className={styles.input}
           name="message"
           placeholder="Messaggio"
           value={formData.message}
@@ -203,6 +204,8 @@ export default function Contacts() {
         <button className={styles.button} type="submit">Invia</button>
       </form>
     </div>
+    </div>
+    <Footer />
     </div>
   );
 }

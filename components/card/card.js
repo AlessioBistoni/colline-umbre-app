@@ -44,10 +44,10 @@ const Card = ({
             <Image
               src={backgroundImage}
               alt="immagine di un vino"
-              layout="responsive"
               width={1024}
               height={1024}
-              className="card-img-top"
+              priority={true}
+              className="card-img-top w-100 h-50"
             />
 
             <div className="card-body">

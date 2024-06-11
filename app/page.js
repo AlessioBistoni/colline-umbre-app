@@ -9,7 +9,7 @@ export default function Home() {
   
   return (
     <div>
-      <Parallax pages={6.5}>
+      <Parallax pages={6.6}>
         <ParallaxLayer speed={0} offset={0}>
           <motion.div 
           initial={{ opacity: 0, scale: 1, y: 0 }}
@@ -20,7 +20,7 @@ export default function Home() {
             <Image
               src="/cantina.png"
               alt="Cantina"
-              layout="responsive"
+              // layout="responsive"
               width={2000}
               height={1125}
               className={styles.imageWelcome}
@@ -88,7 +88,7 @@ export default function Home() {
 
 
         {/* scritta esplora l'eccezionale mondo dei vini umbri e sottotitolo */}
-        <ParallaxLayer speed={0} offset={3}>
+        <ParallaxLayer speed={0} offset={3.1}>
           <motion.div
             initial={{ opacity: 0, scale: 1, y: 0 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -122,9 +122,9 @@ export default function Home() {
                   <Image
                     src="/bianco.png"
                     alt="Intro"
-                    layout="responsive"
-                    width={2000}
-                    height={1125}
+                    width={841}
+                    height={2901}
+                    className={styles.imageVino}
                   />
                 </div>
               </div>
@@ -161,8 +161,8 @@ export default function Home() {
                     src="/rosso.png"
                     alt="Intro"
                     layout="responsive"
-                    width={2000}
-                    height={1125}
+                    width={841}
+                    height={2901}
                   />
                 </div>
               </div>
@@ -186,7 +186,7 @@ export default function Home() {
           </div>
         </ParallaxLayer>
 
-        <ParallaxLayer speed={0} offset={6.15}>
+        <ParallaxLayer speed={0} offset={6.02}>
         <Footer />
         </ParallaxLayer>
 

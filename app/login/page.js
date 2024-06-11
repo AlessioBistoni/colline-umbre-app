@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import styles from "./login.module.css";
+import Footer from "@/components/footer/footer.js";
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -54,6 +55,7 @@ export default function Login() {
   };
 
   return (
+    <div>
     <div className={styles.container}>
       {!user ? (
         <> 
@@ -99,6 +101,8 @@ export default function Login() {
         </div>
 
       )}
+    </div>
+      <Footer />
     </div>
   );
 }

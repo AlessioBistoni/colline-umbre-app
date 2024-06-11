@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import styles from './Carrello.module.css';
+import Footer from "@/components/footer/footer.js";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -85,12 +86,16 @@ const Cart = () => {
     }
   };
 
+
+
   return (
+    <div>
     <div className={styles.container}>
       <h1>Carrello</h1>
       {cartItems.length === 0 ? (
         <p>Il carrello è vuoto</p>
       ) : (
+        <div>
         <ul>
           {cartItems.map(item => (
             <div className={styles.scheda} key={item.id}>
@@ -107,7 +112,14 @@ const Cart = () => {
             </div>
           ))}
         </ul>
+
+        
+        <p>il totale è </p>
+        </div>
+        
       )}
+      </div>
+      <Footer />
     </div>
   );
 };

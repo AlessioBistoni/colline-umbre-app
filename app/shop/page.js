@@ -1,9 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Card from "@/components/card/card"; // Assicurati che il percorso sia corretto
-import MenuUtente from "@/components/menuUtente/menuUtente"; // Assicurati che il percorso sia corretto
+
 import styles from "./shop.module.css";
 import Cookies from "js-cookie";
+import Footer from "@/components/footer/footer.js";
 
 const ShopPage = () => {
   const [wines, setWines] = useState([]);
@@ -41,17 +42,17 @@ const ShopPage = () => {
     <div>
       {user ? (
         <div>
-          {/* <div className={styles.menuUtente}>
-            <MenuUtente />
-          </div> */}
+
+          <div className={styles.userContainer}>
           <div className={styles.user}>
             <h1>Benvenuto, {user.nome}!</h1>
-            {/* <MenuUtente /> */}
             <a href="/carrello" >
               <button href="/carrello" className="btn btn-primary m-2">Carrello</button>
             </a>
             <button onClick={handleLogout} className="btn btn-primary m-2">Logout</button>
           </div>
+          </div>
+
           <div className={styles.vini}>
             <h1 className="text-center">i nostri vini</h1>
 
@@ -87,6 +88,7 @@ const ShopPage = () => {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 };

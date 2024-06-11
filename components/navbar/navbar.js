@@ -1,44 +1,97 @@
-import Link from 'next/link';
-import Image from 'next/image';
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 import styles from "./Navbar.module.css";
-const Navbar = () => {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-transparent fixed-top align-content-center ">
-      <div className="container-fluid">
 
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-          
-          <ul className={styles.barra}>
-          <div className={styles.logoImageContainer}>
+const Navbar = () => {
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
+  return (
+    <nav className={styles.barraContainer}>
+
+        <div className={styles.barraPiccola} >
         <Image
-              src="/logo.png"
-              alt="logo"
-              width={50}
-              height={50}
-              className={styles.imageLogo}
-            />
+                src="/logo.png"
+                alt="logo"
+                width={50}
+                height={50}
+                className={styles.imageLogo}
+              />
+          
+          <button className={styles.bottoneMenu} onClick={toggleDropdown}>
+            Menu
+          </button>
+          <div
+            className={`${styles.Menu} ${
+              dropdownVisible ? styles.show : ""
+            }`}
+          >
+            <li className="nav-item ">
+              <Link href="/" className="nav-link">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/about" className="nav-link">
+                About
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/contact" className="nav-link">
+                Contact
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/shop" className="nav-link">
+                Shop
+              </Link>
+            </li>
+          </div>
         </div>
-        
+
+
+
+        {/* <div className={styles.barraContainer}> */}
+          <ul className={styles.barra}>
+            <div className={styles.logoImageContainer}>
+              <Image
+                src="/logo.png"
+                alt="logo"
+                width={50}
+                height={50}
+                className={styles.imageLogo}
+              />
+            </div>
             <li className="nav-item px-3">
-              <Link href="/" className="nav-link">Home</Link>
+              <Link href="/" className="nav-link">
+                Home
+              </Link>
             </li>
             <li className="nav-item px-3">
-              <Link href="/about" className="nav-link">About</Link>
+              <Link href="/about" className="nav-link">
+                About
+              </Link>
             </li>
             <li className="nav-item px-3">
-              <Link href="/contact" className="nav-link">Contact</Link>
+              <Link href="/contact" className="nav-link">
+                Contact
+              </Link>
             </li>
             <li className="nav-item px-3">
-              <Link href="/shop" className="nav-link">Shop</Link>
+              <Link href="/shop" className="nav-link">
+                Shop
+              </Link>
             </li>
           </ul>
-        </div>
-      </div>
+
+      {/* </div> */}
     </nav>
   );
-}
+};
 
 export default Navbar;

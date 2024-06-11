@@ -40,7 +40,7 @@ const Bottone = ({ userId, wineId }) => {
         <Image
         src="/icon/ok.png"
         alt="cerrllo"
-        layout="responsive"
+
         width={32}
         height={32}
         className={styles.cartIcon}
@@ -51,7 +51,7 @@ const Bottone = ({ userId, wineId }) => {
         <Image
         src="/icon/cart.png"
         alt="cerrllo"
-        layout="responsive"
+
         width={32}
         height={32}
         className={styles.cartIcon}

@@ -41,6 +41,14 @@ async function setupDB() {
       FOREIGN KEY (wine_id) REFERENCES wines(id)
     );
 
+    CREATE TABLE IF NOT EXISTS contacts (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      message TEXT NOT NULL
+      );
+  
+
     INSERT INTO wines (name, price, year, type, short_description, long_description, image) 
     VALUES 
       ('Chianti Classico',10, 2018, 'Rosso', 'Il Chianti Classico è un icona dei vini italiani.', 'Il Chianti Classico è uno dei vini più celebri e apprezzati della Toscana. Prodotto nella regione del Chianti, è noto per il suo gusto robusto e il caratteristico aroma di ciliegia. Questo vino rosso è perfetto per accompagnare piatti di carne o formaggi stagionati. Ha una storia antica e una tradizione che si tramanda da secoli.', '/viniShop/Chianti.jpg'),

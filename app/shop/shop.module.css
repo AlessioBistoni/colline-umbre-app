@@ -1,7 +1,10 @@
+.userContainer {
+  padding-top: 200px;
+}
+
 .user {
-  margin: auto;
-  width: 400px;
-  margin-top: 200px;
+  margin-inline: auto;
+  width: 400px;;
   margin-bottom: 100px;
   padding: 20px;
   border-radius: 10px;
@@ -9,13 +12,7 @@
   background-color: #E8D8D0;
 }
 
-.menuUtente{
-  /* margin: 100px; */
-  position: fixed;
-  right: 40px;
-  top: 40px;
-  z-index: 999; /* Imposta il valore di z-index */
-}
+
 
 .loginContainer{
   height: 100vh;
