@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import styles from "./login.module.css";
 import Footer from "@/components/footer/footer.js";
 
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,12 +34,15 @@ export default function Login() {
       });
       const data = await response.json();
       if (response.ok) {
+        console.log('Login riuscito:', data);
         // Memorizza le informazioni dell'utente nello stato e nei cookie
         setUser(data.user);
         Cookies.set('user', JSON.stringify(data.user), { expires: 1 }); // Imposta il cookie per 1 giorno
         // Login riuscito, reindirizza l'utente alla dashboard o alla pagina desiderata
+        window.location.reload();
         router.push('/shop');
       } else {
+        console.log('Errore durante il login:', data.message);
         setError(data.message || 'Errore durante il login');
       }
     } catch (error) {
@@ -50,8 +54,9 @@ export default function Login() {
   const handleLogout = () => {
     // Rimuovi le informazioni dell'utente dallo stato e dai cookie
     setUser(null);
+    console.log('Logout effettuato');
     Cookies.remove('user');
-    router.push('/shop'); // Reindirizza alla pagina di login
+    window.location.reload();
   };
 
   return (
@@ -87,7 +92,7 @@ export default function Login() {
             <p className={styles.descrizione}>
             Accedendo a Colline Umbre, troverai la lista dei miei vini e potrai acquistarli direttamente online con pochi clic.
             </p>
-            <button type="submit">Accedi</button>
+            <button className='btn btn-primary' type="submit">Accedi</button>
           </form>
           </div>
 

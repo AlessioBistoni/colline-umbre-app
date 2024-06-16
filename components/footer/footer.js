@@ -68,6 +68,10 @@ const Footer = () => {
                 Shop
               </a>{" "}
               |{" "}
+              <a href="/login" className="text-white">
+                Login
+              </a>{" "}
+              |{" "}
 
             </p>
           </div>

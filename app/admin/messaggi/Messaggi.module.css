@@ -1,0 +1,13 @@
+.container {
+  min-height: 100vh;
+  margin: auto;
+  width: 1000px;
+  padding: auto;
+
+  padding-top: 150px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+
+}

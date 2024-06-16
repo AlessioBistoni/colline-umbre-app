@@ -29,7 +29,8 @@ async function setupDB() {
       email TEXT NOT NULL,
       password TEXT NOT NULL,
       nome TEXT NOT NULL,
-      cognome TEXT NOT NULL
+      cognome TEXT NOT NULL,
+      admin BOOLEAN DEFAULT 0
     );
 
     CREATE TABLE IF NOT EXISTS cart (
@@ -57,9 +58,9 @@ async function setupDB() {
       ('Barolo',20, 2017, 'Rosso', 'Il Barolo è il re dei vini italiani.', 'Il Barolo è uno dei vini rossi più rinomati d Italia, prodotto nelle colline del Piemonte. Con il suo colore rosso rubino intenso e i profumi complessi di frutti di bosco e spezie, il Barolo è un vino robusto e strutturato, perfetto per accompagnare piatti di carne o formaggi stagionati. La sua eleganza e la sua complessità lo rendono adatto anche per l invecchiamento in cantina.', '/viniShop/Barolo.jpg'),
       ('Amarone della Valpolicella',30, 2021, 'Rosso', 'L Amarone della Valpolicella è un vino rosso corposo e avvolgente.', 'L Amarone della Valpolicella è un vino rosso italiano unico e prezioso, prodotto nella regione della Valpolicella, nel Veneto. Con il suo gusto intenso e avvolgente e i profumi complessi di frutti rossi e spezie, l Amarone è perfetto per occasioni speciali e piatti ricchi come arrosti o formaggi stagionati. È un vino che richiede pazienza e dedizione nella sua produzione, ma che ricompensa con una straordinaria esperienza gustativa.', '/viniShop/Amarone.jpg');
 
-    INSERT INTO users (email, password, nome, cognome) VALUES
-      ('test@example.com', 'password123', 'Mario', 'Rossi'),
-      ('example@test.com', 'password456', 'Luigi', 'Verdi');
+    INSERT INTO users (email, password, nome, cognome, admin) VALUES
+      ('test@example.com', 'password123', 'Mario', 'Rossi', 1),
+      ('example@test.com', 'password456', 'Luigi', 'Verdi', 0);
       
     INSERT INTO cart (user_id, wine_id, quantity) VALUES
       (1, 1, 1),

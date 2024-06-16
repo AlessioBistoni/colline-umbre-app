@@ -1,11 +1,20 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from 'react';
 import styles from "./Navbar.module.css";
+import Cookies from "js-cookie";
 
 const Navbar = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [userAdmin, setUserAdmin] = useState(null);
+
+  console.log(userAdmin);
+
+  useEffect(() => {
+    const user = Cookies.get('user') ? JSON.parse(Cookies.get('user')) : null;
+    setUserAdmin(user ? user.admin : null);
+  }, []);
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
@@ -81,6 +90,13 @@ const Navbar = () => {
                 Shop
               </Link>
             </li>
+            {userAdmin == 1 ? 
+            <li className="nav-item px-3">
+            <Link href="/admin" className="nav-link">
+              Admin
+            </Link>
+          </li>
+            : null}
           </ul>
 
       {/* </div> */}

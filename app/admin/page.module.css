@@ -1,0 +1,59 @@
+.container {
+  margin: auto;
+  width: 1000px;
+  padding: auto;
+
+  padding-top: 150px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+
+}
+
+.informazioni{
+
+  border-radius: 25px;
+  padding-block: 25px;
+  background-color: rgb(213, 156, 152);
+}
+
+
+
+
+.sezioneSchede{
+  display: flex;
+
+  padding-block: 50px;
+  justify-content: space-between;
+
+  }
+  
+.scheda{
+  
+
+  width: 480px;
+  height: 300px;
+
+  border-radius: 25px;
+  padding-block: 25px;
+  background-color: rgb(213, 156, 152);
+  
+  }
+
+.bottone{
+  padding-block: 10px;
+
+}
+.testoFinale{
+  text-align: justify;
+  /* padding-block: 50px; */
+  padding-inline: 50px;
+  /* background-color: rgb(213, 156, 152); */
+  border-radius: 25px;
+}
+  
+.caricamento{
+  align-items: center;
+  height: 100vh;
+}

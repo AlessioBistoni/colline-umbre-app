@@ -1,0 +1,20 @@
+.container {
+
+
+  /* width: 30%; */
+
+
+  margin-top: 150px;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: rgb(234, 204, 202);
+
+
+}
+
+.messaggio{
+  height: 100vh;
+  align-content: center;
+}
