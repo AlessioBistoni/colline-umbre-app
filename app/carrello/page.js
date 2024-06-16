@@ -88,6 +88,34 @@ const Cart = () => {
     }
   };
 
+  const handlePurchase = async () => {
+    // Prepara i dati dell'ordine
+    const orderItems = cartItems.map(item => ({
+      userId: userId,
+      wineId: item.wine_id,
+      quantity: item.quantity
+    }));
+
+    try {
+      const response = await fetch('http://localhost:3001/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderItems),
+      });
+      if (!response.ok) {
+        throw new Error('Errore durante l\'invio dell\'ordine');
+      }
+
+      // Dopo aver inviato l'ordine, svuota il carrello
+      setCartItems([]);
+      setTotal(0);
+      alert('Ordine effettuato con successo!');
+    } catch (error) {
+      console.error('Errore durante l\'invio dell\'ordine:', error.message);
+    }
+  };
 
 
   return (
@@ -118,7 +146,7 @@ const Cart = () => {
 
         <div className={styles.acquista}>
         <h2>Il totale è {totale} € </h2>
-        <button className='btn btn-primary mb-3 ms-4'>Acquista</button>
+        <button className='btn btn-primary mb-3 ms-4' onClick={handlePurchase}>Acquista</button>
         </div>
         </div>
         

@@ -46,9 +46,20 @@ async function setupDB() {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
       email TEXT NOT NULL,
-      message TEXT NOT NULL
-      );
+      message TEXT NOT NULL,
+      sent_date DATE NOT NULL DEFAULT CURRENT_DATE,
+      sent_time TIME NOT NULL DEFAULT CURRENT_TIME
+    );
   
+
+        CREATE TABLE IF NOT EXISTS orders (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      wine_id INTEGER NOT NULL,
+      quantity INTEGER NOT NULL,
+      FOREIGN KEY (user_id) REFERENCES users(id),
+      FOREIGN KEY (wine_id) REFERENCES wines(id)
+    );
 
     INSERT INTO wines (name, price, year, type, short_description, long_description, image) 
     VALUES 

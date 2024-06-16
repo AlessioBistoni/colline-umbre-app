@@ -3,6 +3,7 @@ const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const ObjectsToCsv = require('objects-to-csv');
 const { openDB } = require('../database/database.js');
 
 const app = express();
@@ -166,7 +167,6 @@ app.post('/api/cart/remove', async (req, res) => {
   }
 });
 
-// Route per inviare messaggi dal form
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -177,13 +177,24 @@ app.post('/api/contact', async (req, res) => {
 
   try {
     const db = await openDB();
-    await db.run('INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)', [name, email, message]);
+    
+    // Ottieni la data e l'ora correnti
+    const currentDate = new Date().toISOString().slice(0, 10); // Ottiene la data nel formato 'YYYY-MM-DD'
+    const currentTime = new Date().toLocaleTimeString(); // Ottiene l'ora nel formato 'HH:MM:SS'
+
+    // Inserisci il messaggio nel database con data e ora
+    await db.run(
+      'INSERT INTO contacts (name, email, message, sent_date, sent_time) VALUES (?, ?, ?, ?, ?)',
+      [name, email, message, currentDate, currentTime]
+    );
+
     res.status(200).json({ message: 'Message sent successfully' });
   } catch (error) {
     console.error('Errore durante l\'invio del messaggio:', error);
     res.status(500).json({ error: 'Errore durante l\'invio del messaggio' });
   }
 });
+
 
 // Route per aggiungere un nuovo vino al catalogo con immagine
 app.post('/api/wines', upload.single('image'), async (req, res) => {
@@ -242,6 +253,57 @@ app.get('/api/messages', async (req, res) => {
     res.status(500).json({ error: 'Errore nel recupero dei messaggi' });
   }
 });
+
+
+// Route per eliminare un messaggio
+app.delete('/api/messages/:id', async (req, res) => {
+  const messageId = req.params.id;
+
+  try {
+    const db = await openDB();
+    await db.run('DELETE FROM contacts WHERE id = ?', [messageId]);
+    res.status(200).json({ message: 'Messaggio eliminato con successo' });
+  } catch (error) {
+    console.error('Errore durante l\'eliminazione del messaggio:', error);
+    res.status(500).json({ error: 'Errore durante l\'eliminazione del messaggio' });
+  }
+});
+
+// Route per eliminare tutti i messaggi
+app.delete('/api/messages', async (req, res) => {
+  try {
+    const db = await openDB();
+    await db.run('DELETE FROM contacts');
+    res.status(200).json({ message: 'Tutti i messaggi sono stati eliminati con successo' });
+  } catch (error) {
+    console.error('Errore durante l\'eliminazione di tutti i messaggi:', error);
+    res.status(500).json({ error: 'Errore durante l\'eliminazione di tutti i messaggi' });
+  }
+});
+
+// Route per scaricare i messaggi in formato CSV
+app.get('/api/messages/csv', async (req, res) => {
+  try {
+    const db = await openDB();
+    const messages = await db.all('SELECT * FROM contacts');
+
+    // Converti oggetti in formato CSV
+    const csv = new ObjectsToCsv(messages);
+
+    // Scrivi il CSV in una stringa
+    const csvString = await csv.toString();
+
+    // Imposta gli header per il download del file
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', 'attachment; filename="messages.csv"');
+    res.status(200).send(csvString);
+  } catch (error) {
+    console.error('Errore nel generare il file CSV:', error);
+    res.status(500).json({ error: 'Errore nel generare il file CSV' });
+  }
+});
+
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

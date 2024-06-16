@@ -4,6 +4,7 @@ import AdminLayout from "./Layout/LayoutAdmin";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import styles from "./page.module.css";
+import DownloadCsvButton from "@/components/addToCartButton/downloadMessagesButton/downloadMessagesButton";
 
 const Admin = () => {
   const [user, setUser] = useState(null);
@@ -40,6 +41,12 @@ const Admin = () => {
               <a href="/admin/messaggi">
                 <button className="btn btn-primary">Vai alla casella</button>
               </a>
+             
+            </div>
+            <div className={styles.bottone}>
+            <DownloadCsvButton></DownloadCsvButton>
+
+
             </div>
           </div>
           <div className={styles.scheda}>
