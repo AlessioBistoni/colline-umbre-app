@@ -363,6 +363,31 @@ app.get('/api/admin/orders', async (req, res) => {
 });
 
 
+// Route per registrare un nuovo utente
+app.post('/api/register', async (req, res) => {
+  const { email, password, nome, cognome } = req.body;
+
+  if (!email || !password || !nome || !cognome) {
+    return res.status(400).json({ message: 'Tutti i campi sono obbligatori' });
+  }
+
+  try {
+    const db = await openDB();
+    const result = await db.run('INSERT INTO users (email, password, nome, cognome) VALUES (?, ?, ?, ?)', [
+      email,
+      password,
+      nome,
+      cognome
+    ]);
+    const newUser = await db.get('SELECT * FROM users WHERE id = ?', [result.lastID]);
+
+    res.status(201).json({ message: 'Registrazione riuscita', user: newUser });
+  } catch (error) {
+    console.error('Errore durante la registrazione:', error);
+    res.status(500).json({ message: 'Errore durante la registrazione' });
+  }
+});
+
 
 
 
