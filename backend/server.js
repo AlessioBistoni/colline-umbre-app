@@ -303,6 +303,67 @@ app.get('/api/messages/csv', async (req, res) => {
   }
 });
 
+app.post('/api/orders', async (req, res) => {
+  const { userId, cartItems } = req.body;
+
+  try {
+    const db = await openDB();
+    const currentDate = new Date().toISOString().slice(0, 10); // Ottiene la data nel formato 'YYYY-MM-DD'
+    
+    // Calcola il totale degli importi dell'ordine
+    let totalAmount = 0.0;
+    for (const item of cartItems) {
+      totalAmount += item.price * item.quantity;
+    }
+    
+    // Inserisci l'ordine nella tabella degli ordini
+    const result = await db.run('INSERT INTO orders (user_id, order_date, total_amount) VALUES (?, ?, ?)', [userId, currentDate, totalAmount]);
+    const orderId = result.lastID;
+
+    // Inserisci i dettagli dell'ordine nella tabella order_details
+    for (const item of cartItems) {
+      await db.run('INSERT INTO order_details (order_id, wine_id, quantity, price_per_unit) VALUES (?, ?, ?, ?)', [orderId, item.wine_id, item.quantity, item.price]);
+    }
+
+    // Pulisci il carrello dell'utente dopo aver completato l'ordine
+    await db.run('DELETE FROM cart WHERE user_id = ?', [userId]);
+
+    res.status(200).json({ message: 'Ordine completato con successo' });
+  } catch (error) {
+    console.error('Errore durante la creazione dell\'ordine:', error);
+    res.status(500).json({ error: 'Errore durante la creazione dell\'ordine' });
+  }
+});
+
+// Endpoint per recuperare tutti gli ordini
+app.get('/api/admin/orders', async (req, res) => {
+  try {
+    const db = await openDB();
+    const orders = await db.all(`
+      SELECT o.*, u.nome, u.cognome, u.email 
+      FROM orders o
+      JOIN users u ON o.user_id = u.id
+    `);
+
+    for (const order of orders) {
+      const orderDetails = await db.all(`
+        SELECT od.id, od.quantity, od.price_per_unit, w.name 
+        FROM order_details od
+        JOIN wines w ON od.wine_id = w.id
+        WHERE od.order_id = ?
+      `, [order.id]);
+      order.order_details = orderDetails;
+    }
+
+    res.json(orders);
+  } catch (error) {
+    console.error('Errore durante il recupero degli ordini:', error);
+    res.status(500).json({ error: 'Errore durante il recupero degli ordini' });
+  }
+});
+
+
+
 
 
 app.listen(port, () => {
