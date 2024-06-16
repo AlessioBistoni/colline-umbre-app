@@ -70,7 +70,9 @@ const ShopPage = () => {
                       backgroundImage={wine.image}
                       short_description={wine.short_description}
                       long_description={wine.long_description}
+                      
                     />
+
                   </div>
                 ))}
               </div>

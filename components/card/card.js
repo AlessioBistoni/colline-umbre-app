@@ -1,7 +1,7 @@
-"use client";
 import React, { useState } from "react";
 import AddToCartButton from "@/components/addToCartButton/addToCartButton"; // Assicurati che il percorso sia corretto
 import Image from "next/image";
+import styles from "./Card.module.css";
 
 const Card = ({
   cardId,
@@ -22,12 +22,12 @@ const Card = ({
 
   const CardStyles = {
     transition: "transform 0.3s ease",
-    boxShadow: "0 6px 10px rgba(0, 0, 0, 0.2)", // Opacità del colore dell'ombra aumentata a 0.3
-    borderRadius: "10px", // Bordo arrotondato
+    boxShadow: "0 6px 10px rgba(0, 0, 0, 0.2)",
+    borderRadius: "10px",
   };
 
   const CardHoverStyles = {
-    transform: "scale(1.05)",
+    transform: "scale(1.05)", 
   };
 
   return (
@@ -38,28 +38,39 @@ const Card = ({
       }
       onMouseOut={(e) => (e.currentTarget.style.transform = "none")}
     >
-      <div className="col-md-20 mb-3">
+      <div className="col-md-20 mb-5">
         <div className="card bg-light">
           <div onClick={toggleDescription}>
-            <Image
-              src={backgroundImage}
-              alt="immagine di un vino"
-              width={1024}
-              height={1024}
-              priority={true}
-              className="card-img-top w-100 h-50"
-            />
+            <div className={styles["square-image-wrapper"]}>
+              {" "}
+              {/* Usa la classe importata dal CSS */}
+              <Image
+                src={backgroundImage}
+                alt="immagine di un vino"
+                layout="fill"
+                objectFit="cover"
+                priority={true}
+                className="card-img-top"
+              />
+            </div>
 
             <div className="card-body">
-              <h1 className="card-title h2 mb-4">{cardTitle}</h1>
+              <div className={styles.titleContainer}>
+              <h1 className="card-title h2">{cardTitle}</h1>
+              </div>
 
               <h2 className="card-text h6">{cardTipo}</h2>
               <h2 className="card-text h6 mb-4">{cardAnno}</h2>
 
               {showLongDescription ? (
-                <h2 className="card-text h5 mb-4">{long_description}</h2>
+                <div className={styles.testoLungoContainer}>
+                  <h2 className={styles.testolungo}>{long_description}</h2>
+                
+                </div>
               ) : (
-                <h2 className="card-text h5 mb-4">{short_description}</h2>
+                <div className={styles.testoCortoContainer}>
+                <h2 className={styles.testocorto}>{short_description}</h2>
+                </div>
               )}
             </div>
           </div>

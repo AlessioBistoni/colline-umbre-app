@@ -1,15 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 const { openDB } = require('../database/database.js');
 
 const app = express();
 const port = 3001;
 
-// Configurazione multer
+// Configurazione multer per percorso temporaneo
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // Cartella di destinazione per i file caricati
+    cb(null, 'uploads/'); // Cartella di destinazione temporanea per i file caricati
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}_${file.originalname}`);
@@ -22,6 +24,7 @@ app.use(cors({
   origin: 'http://localhost:3000'
 }));  // Abilita CORS per il dominio del frontend
 app.use(express.json());  // Middleware per gestire il parsing del JSON
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve la cartella uploads come statica
 
 // Route per recuperare tutti i vini
 app.get('/api/wines', async (req, res) => {
@@ -147,6 +150,7 @@ app.post('/api/cart/decrease', async (req, res) => {
   }
 });
 
+//route per rimuovere un elemento dal carrello
 app.post('/api/cart/remove', async (req, res) => {
   const { userId, wineId } = req.body;
 
@@ -162,9 +166,7 @@ app.post('/api/cart/remove', async (req, res) => {
   }
 });
 
-
-
-// Route per inviare messaggi di contatto
+// Route per inviare messaggi dal form
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -183,14 +185,32 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Route per aggiungere un nuovo vino
-app.post('/api/wines', async (req, res) => {
-  const { name, price, year, type, short_description, long_description, image } = req.body;
+// Route per aggiungere un nuovo vino al catalogo con immagine
+app.post('/api/wines', upload.single('image'), async (req, res) => {
+  const { name, price, year, type, short_description, long_description } = req.body;
+  const tempImagePath = req.file.path;
+  const imageExtension = path.extname(req.file.originalname);
 
   try {
     const db = await openDB();
-    await db.run('INSERT INTO wines (name, price, year, type, short_description, long_description, image) VALUES (?, ?, ?, ?, ?, ?, ?)', 
-                 [name, price, year, type, short_description, long_description, image]);
+
+    // Inserisci il vino nel database senza immagine
+    const result = await db.run(
+      'INSERT INTO wines (name, price, year, type, short_description, long_description) VALUES (?, ?, ?, ?, ?, ?)',
+      [name, price, year, type, short_description, long_description]
+    );
+
+    const wineId = result.lastID;
+    const newFileName = `${wineId}${imageExtension}`;
+    const newImagePath = path.join('viniShop', newFileName); // Percorso relativo nella cartella public
+    const dbImagePath = `/${newImagePath}`; // Percorso per il database
+
+    // Rinomina e sposta l'immagine nella cartella viniShop
+    fs.renameSync(tempImagePath, path.join(__dirname, '../public', newImagePath));
+
+    // Aggiorna il percorso dell'immagine nel database
+    await db.run('UPDATE wines SET image = ? WHERE id = ?', [dbImagePath, wineId]);
+
     res.status(200).json({ message: 'Vino aggiunto con successo' });
   } catch (error) {
     console.error('Errore durante l\'aggiunta del vino:', error);
@@ -198,19 +218,7 @@ app.post('/api/wines', async (req, res) => {
   }
 });
 
-
-// Per scaricare i messaggi 
-app.get('/api/messages', async (req, res) => {
-  try {
-    const db = await openDB();
-    const messages = await db.all('SELECT * FROM contacts');
-    res.status(200).json(messages);
-  } catch (error) {
-    res.status(500).json({ error: 'Errore nel recupero dei messaggi' });
-  }
-});
-
-// Route per eliminare un vino
+// Route per rimuovere un vino dal catalogo
 app.delete('/api/wines/:id', async (req, res) => {
   const wineId = req.params.id;
 
@@ -224,25 +232,16 @@ app.delete('/api/wines/:id', async (req, res) => {
   }
 });
 
-
-router.post('/api/wines', upload.single('image'), async (req, res) => {
-  const { name, price, year, type, short_description, long_description } = req.body;
-  const image = req.file.path;
-
+// Route per scaricare i messaggi
+app.get('/api/messages', async (req, res) => {
   try {
     const db = await openDB();
-    await db.run(
-      'INSERT INTO wines (name, price, year, type, short_description, long_description, image) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [name, price, year, type, short_description, long_description, image]
-    );
-    res.status(201).json({ message: 'Vino aggiunto con successo' });
+    const messages = await db.all('SELECT * FROM contacts');
+    res.status(200).json(messages);
   } catch (error) {
-    console.error('Errore durante l\'aggiunta del vino:', error);
-    res.status(500).json({ error: 'Errore durante l\'aggiunta del vino' });
+    res.status(500).json({ error: 'Errore nel recupero dei messaggi' });
   }
 });
-
-module.exports = router;
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

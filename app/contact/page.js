@@ -13,7 +13,7 @@ const MapComponent = dynamic(() => import('@/components/map/MapComponent'), {
 
 const teamMembers = [
   {
-    name: "Billeri Simone",
+    name: "Simone Billeri",
     role: "Co-Founder",
     email: "simone@collineumbre.com",
     phone: "+39 123 456 789",

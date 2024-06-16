@@ -75,6 +75,7 @@ const AddWine = () => {
                         <input
                             type="text"
                             name="name"
+                            maxLength={20}
                             value={formData.name}
                             onChange={handleChange}
                             required
@@ -85,6 +86,8 @@ const AddWine = () => {
                         <input
                             type="number"
                             name="price"
+                            min={1}
+                            max={1000}
                             value={formData.price}
                             onChange={handleChange}
                             required
@@ -95,6 +98,7 @@ const AddWine = () => {
                         <input
                             type="number"
                             name="year"
+                            min={1950}
                             value={formData.year}
                             onChange={handleChange}
                             required
@@ -105,6 +109,7 @@ const AddWine = () => {
                         <input
                             type="text"
                             name="type"
+                            maxLength={20}
                             value={formData.type}
                             onChange={handleChange}
                             required
@@ -115,6 +120,7 @@ const AddWine = () => {
                         <input
                             type="text"
                             name="short_description"
+                            maxLength={50}
                             value={formData.short_description}
                             onChange={handleChange}
                             required
@@ -123,6 +129,8 @@ const AddWine = () => {
                     <div>
                         <label>Descrizione Lunga:</label>
                         <textarea
+                            type="text"
+                            maxLength={400}
                             name="long_description"
                             value={formData.long_description}
                             onChange={handleChange}
