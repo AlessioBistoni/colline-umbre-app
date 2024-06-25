@@ -423,7 +423,7 @@ app.get('/api/admin/orders/csv', async (req, res) => {
 app.get('/api/users', async (req, res) => {
   try {
     const db = await openDB();
-    const users = await db.all('SELECT nome, cognome, email FROM users');
+    const users = await db.all('SELECT nome, cognome, email, id, admin FROM users');
     res.status(200).json(users);
   } catch (error) {
     console.error('Errore nel recupero degli utenti:', error);
@@ -431,6 +431,38 @@ app.get('/api/users', async (req, res) => {
   }
 });
 
+// Route per eliminare un utente
+app.delete('/api/users/:id', async (req, res) => {
+  const userId = req.params.id;
+  console.log('userId', userId);
+
+  try {
+    const db = await openDB();
+    await db.run('DELETE FROM users WHERE id = ?', [userId]);
+    res.status(200).json({ message: 'Utente eliminato con successo' });
+  } catch (error) {
+    console.error('Errore durante l\'eliminazione dell\'utente:', error);
+    res.status(500).json({ error: 'Errore durante l\'eliminazione dell\'utente' });
+  }
+});
+
+// Route per scaricare le informazioni degli utenti in formato CSV
+app.get('/api/users/csv', async (req, res) => {
+  try {
+    const db = await openDB();
+    const users = await db.all('SELECT nome, cognome, email FROM users');
+
+    const csv = new ObjectsToCsv(users);
+    const csvString = await csv.toString();
+
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', 'attachment; filename="users.csv"');
+    res.status(200).send(csvString);
+  } catch (error) {
+    console.error('Errore nel generare il file CSV:', error);
+    res.status(500).json({ error: 'Errore nel generare il file CSV' });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

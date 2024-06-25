@@ -4,8 +4,9 @@ import AdminLayout from "./Layout/LayoutAdmin";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import styles from "./page.module.css";
-import DownloadMessageButton from "@/components/addToCartButton/downloadMessagesButton/downloadMessagesButton";
+import DownloadMessageButton from "@/components/downloadMessagesButton/downloadMessagesButton";
 import DownloadOrdersButton from "@/components/downloadOrdersButton/downloadOrderButton";
+import DownloadUsersButton from "@/components/downloadUsersButton/downloadUsersButton";
 
 const Admin = () => {
   const [user, setUser] = useState(null);
@@ -79,7 +80,7 @@ const Admin = () => {
               </a>
             </div>
             <div className={styles.bottone}>
-              <DownloadOrdersButton />
+              <DownloadUsersButton />
             </div>
           </div>
         </div>

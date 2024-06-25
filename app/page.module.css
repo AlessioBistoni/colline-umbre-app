@@ -2,7 +2,7 @@
   position: absolute;
   text-align: center;
   width: 100%;
-  top: 80%;
+  top: 70%;
   background-color: rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 50px 50px rgba(0, 0, 0, 0.3); /* Ombra sfocata per bordi */
   border-radius: 10px; /* Per bordi arrotondati */
@@ -10,17 +10,39 @@
   
 }
 
+.benvenuto {
+  margin: auto;
+  color: #F5E7DE; /* Bianco panna */
+  font-size: 1.5em;
+  text-align: left;
+  padding-bottom: 30px;
+  margin: auto;
+  text-align: center;
+  margin-left: -450px;
+
+  
+}
+
+
+
 .titoloDiBenvenuto {
-  font-size: 3em;
+  font-size: 6em;
   font-weight: bold;
   color: #F5E7DE; /* Bianco panna */
-  
+  padding-bottom: 15px;
+  padding-left: 20px;
+  font-family: cursive;
+  margin: auto;
+  text-align: center;
 }
 
 .sottotitoloDiBenvenuto {
   font-size: 1.5em;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #F5E7DE; /* Bianco panna */
+  margin-right: -350px;
+  padding-top: 30px;
+
   
 }
 
@@ -184,6 +206,26 @@
   .scrittaDiBenvenuto {
     
     top: 60%;
+  }
+
+  .benvenuto{
+    margin-left: -350px;
+    font-size: 1em;
+  }
+
+  .titoloDiBenvenuto {
+    font-size: 4em;
+    
+  }
+
+  .sottotitoloDiBenvenuto {
+    font-size: 1em;
+    /* font-weight: bold; */
+    color: #F5E7DE; /* Bianco panna */
+    margin-right: -250px;
+  
+  
+    
   }
 
   .TestoDiIntroduzione {

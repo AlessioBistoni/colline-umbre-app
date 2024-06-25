@@ -93,10 +93,11 @@ export default function Login() {
             Accedendo a Colline Umbre, troverai la lista dei miei vini e potrai acquistarli direttamente online con pochi clic.
             </p>
             <button className='btn btn-primary' type="submit">Accedi</button>
-            <p>Non hai un account? <button className='btn btn-secondary' onClick={() => router.push('/register')}>Registrati</button></p>
+            <p className='mt-4 text-danger'>Non hai un account? </p>
+            <button className='mb-3 btn btn-secondary' onClick={() => router.push('/register')}>Registrati</button>
           </form>
-          </div>
 
+          </div>
         </>
       ) : (
 

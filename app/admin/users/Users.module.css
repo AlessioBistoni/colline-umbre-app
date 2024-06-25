@@ -1,18 +1,50 @@
-.container{
+.container {
   min-height: 100vh;
-  padding-top: 150px;
-  padding-bottom: 200px;
-  width: 500px;
+  padding-top: 150px; /* Adjusted for a more balanced padding */
+  padding-bottom: 100px; /* Adjusted for a more balanced padding */
+  width: 98%; /* Increased width for a larger table */
+  max-width: 1200px; /* Ensures the container doesn't get too wide */
   margin: auto;
   text-align: center;
 }
 
-.tabellaUtenti{
-  margin: auto;
-  padding-block: 50px;
-  margin-block: 50px;
-  padding-inline: 50px;
-  border-radius: 25px;
+.tabellaUtenti {
+  width: 100%; /* Make the table take the full width of the container */
+  margin: 50px auto; /* Center the table with margin */
+  padding: 20px; /* Reduced padding for a cleaner look */
+  border-radius: 10px;
+  background-color: #FFF;
+  border-collapse: separate; /* Enables spacing between cells */
+  border-spacing: 20px; /* Increases spacing between cells */
+}
 
-  background-color: #D59C98;
+.tabellaUtenti th, .tabellaUtenti td {
+  padding: 20px; /* Increased padding inside cells for more space */
+  text-align: left; /* Align text to the left for better readability */
+}
+
+.tabellaUtenti th {
+  background-color: #f4f4f4; /* Light background color for header */
+  font-weight: bold; /* Make header text bold */
+}
+
+.tabellaUtenti tr:nth-child(even) {
+  background-color: #f9f9f9; 
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 98%; /* Reduce width for smaller screens */
+    padding-top: 50px; /* Adjust padding for smaller screens */
+    padding-bottom: 50px; /* Adjust padding for smaller screens */
+  }
+
+  .tabellaUtenti {
+    border-spacing: 10px; /* Reduce spacing between cells */
+  }
+
+  .tabellaUtenti th, .tabellaUtenti td {
+    padding: 10px; /* Reduce padding inside cells */
+    font-size: 14px; /* Reduce font size for better fit */
+  }
 }

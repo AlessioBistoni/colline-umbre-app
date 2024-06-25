@@ -1,0 +1,36 @@
+.square-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Ratio 1:1 (100% di larghezza) */
+    overflow: hidden;
+  }
+  
+
+  
+  .testoCortoContainer{
+    height: 150px;
+
+  }
+
+
+  .testocorto{
+    height: 100%;
+    font-size: 1.5rem;
+  
+  }
+  
+  .testoLungoContainer{
+    height: 400px;
+
+  }
+  .testolungo{
+      font-size: 1.5rem;
+      
+      
+      }
+
+.titleContainer{
+    height: 70px;
+    display: flex;
+}

@@ -40,7 +40,7 @@ const OrdersPage = () => {
               <p>Data dell'ordine: {order.order_date}</p>
               <p>Totale: {order.total_amount} €</p>
               <p>Email: {order.email}</p>
-              <h3>Dettagli dell'ordine:</h3>
+              <h3 className='mt-5'>Dettagli dell'ordine:</h3>
               <ul>
                 {order.order_details && order.order_details.length > 0 ? (
                   order.order_details.map(detail => (

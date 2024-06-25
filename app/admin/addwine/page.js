@@ -103,6 +103,7 @@ const AddWine = () => {
                             type="number"
                             name="year"
                             min={1950}
+                            max={2024}
                             value={formData.year}
                             onChange={handleChange}
                             required
@@ -153,6 +154,7 @@ const AddWine = () => {
                             onChange={handleFileChange}
                             required
                             className={styles.immagine}
+                            accept=".jpg, .jpeg, .png" // Limita i tipi di file accettati
                         />
                     </div>
                     <button className='mt-3 btn btn-primary'type="submit">Aggiungi Vino</button>

@@ -36,8 +36,11 @@ export default function Home() {
           viewport={{ once: false }}
           className={styles.scrittaDiBenvenuto}>
 
-            <h1 className={styles.titoloDiBenvenuto}>Benvenuti nella nostra cantina!</h1>
-            <blockquote className={styles.sottotitoloDiBenvenuto}>"Un bicchiere di vino delle Colline Umbre non è solo una bevanda, ma un'esperienza che racconta la storia della nostra terra e della nostra passione."</blockquote>
+            <h2 className={styles.benvenuto}>Benvenuti nella cantina</h2>
+            <h1 className={styles.titoloDiBenvenuto}>Colline Umbre</h1>
+            <h3 className={styles.sottotitoloDiBenvenuto}>Dove il vino racconta la nostra storia...</h3>
+
+            {/* <blockquote className={styles.sottotitoloDiBenvenuto}>"Un bicchiere di vino delle Colline Umbre non è solo una bevanda, ma un'esperienza che racconta la storia della nostra terra e della nostra passione."</blockquote> */}
           </motion.div>
         </ParallaxLayer>
         </section>
@@ -54,7 +57,7 @@ export default function Home() {
             className={styles.TestoDiIntroduzione}
           >
             <h2 className="mx-5 h5 ">dal 1962</h2>
-            <h1>Benvenuti nella Cantina Colline Umbre</h1>
+            <h1>La Tradizione del Buon Vino</h1>
             <p className="mx-5 ">
               Situata nel cuore verde d'Italia, la Cantina "Colline Umbre" è un
               gioiello nascosto tra le dolci colline umbre. Questa regione,

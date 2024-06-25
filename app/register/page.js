@@ -53,58 +53,59 @@ export default function Register() {
 
   return (
     <div>
-        <div className={styles.page}>
       <div className={styles.container}>
-        <h1>Registrati</h1>
-        <form onSubmit={handleRegister}>
-          <div className={styles.field}>
-            <label htmlFor="nome">Nome:</label>
-            <input
-              type="text"
-              id="nome"
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              required
-            />
+        <div className={styles.registrati}>
+          <h1>Registrati</h1>
+          <div className={styles.campi}>
+            <form onSubmit={handleRegister}>
+              <div className={styles.field}>
+                <label htmlFor="nome">Nome:</label>
+                <input
+                  type="text"
+                  id="nome"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  required
+                />
+              </div>
+              <div className={styles.field}>
+                <label htmlFor="cognome">Cognome:</label>
+                <input
+                  type="text"
+                  id="cognome"
+                  value={cognome}
+                  onChange={(e) => setCognome(e.target.value)}
+                  required
+                />
+              </div>
+              <div className={styles.field}>
+                <label htmlFor="email">Email:</label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className={styles.field}>
+                <label htmlFor="password">Password:</label>
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              {error && <p className={styles.error}>{error}</p>}
+              {success && <p className={styles.success}>{success}</p>}
+              <button className='btn btn-primary' type="submit">Registrati</button>
+            </form>
           </div>
-          <div className={styles.field}>
-            <label htmlFor="cognome">Cognome:</label>
-            <input
-              type="text"
-              id="cognome"
-              value={cognome}
-              onChange={(e) => setCognome(e.target.value)}
-              required
-            />
-          </div>
-          <div className={styles.field}>
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className={styles.field}>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          {error && <p className={styles.error}>{error}</p>}
-          {success && <p className={styles.success}>{success}</p>}
-          <button className='btn btn-primary' type="submit">Registrati</button>
-        </form>
         </div>
       </div>
       <Footer />
     </div>
-    
   );
 }
