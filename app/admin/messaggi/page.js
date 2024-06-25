@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import AdminLayout from '../Layout/LayoutAdmin';
-
+import styles from './Messaggi.module.css';
 const MessagesPage = () => {
   const [messages, setMessages] = useState([]);
 
@@ -62,21 +62,27 @@ const MessagesPage = () => {
 
   return (
     <AdminLayout>
-      <div>
-        <h1>Messaggi</h1>
-        <button onClick={deleteAllMessages}>Elimina tutti i messaggi</button>
-        <ul>
+      <div className={styles.container}>
+      {messages.length === 0 ? (
+        <h1 className={styles.nessunMessaggio}>Nella casella non sono presenti messaggi</h1>
+      ) : (
+        <div>
+        <h1 className='ms-5'>Messaggi</h1>
           {messages.map(message => (
-            <li key={message.id}>
+            <div className={styles.schedaMessaggio}>
+            <div key={message.id}>
               <p><strong>Da:</strong> {message.name}</p>
               <p><strong>Email:</strong> {message.email}</p>
               <p><strong>Messaggio:</strong> {message.message}</p>
               <p><strong>Data:</strong> {message.sent_date}</p>
               <p><strong>Ora:</strong> {message.sent_time}</p>
-              <button onClick={() => deleteMessage(message.id)}>Elimina</button>
-            </li>
+              <button className="btn btn-primary" onClick={() => deleteMessage(message.id)}>Elimina</button>
+            </div>
+            </div>
           ))}
-        </ul>
+        <button className="btn btn-primary ms-5" onClick={deleteAllMessages}>Elimina tutti i messaggi</button>
+        </div>
+      )}
       </div>
     </AdminLayout>
   );

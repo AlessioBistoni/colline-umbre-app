@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import styles from './OrderPage.module.css';
+import AdminLayout from '../Layout/LayoutAdmin';
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState([]);
@@ -22,15 +24,17 @@ const OrdersPage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Ordini degli Utenti</h1>
+    <AdminLayout>
+    <div className={styles.container}>
+      <h1 className='ms-5'>Ordini degli Utenti</h1>
       {orders.length === 0 ? (
         <p>Nessun ordine disponibile</p>
       ) : (
         <div>
           {orders.map(order => (
+            <div className={styles.schedaOrdine}>
             <div key={order.id}>
-              <h2>Ordine #{order.id}</h2>
+              <h2>Ordine {order.id}</h2>
               <p>Nome: {order.nome}</p>
               <p>Cognome: {order.cognome}</p>
               <p>Data dell'ordine: {order.order_date}</p>
@@ -49,10 +53,12 @@ const OrdersPage = () => {
                 )}
               </ul>
             </div>
+            </div>
           ))}
         </div>
       )}
     </div>
+    </AdminLayout>
   );
 };
 

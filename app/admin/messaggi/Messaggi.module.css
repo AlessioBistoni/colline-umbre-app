@@ -1,13 +1,29 @@
 .container {
   min-height: 100vh;
-  margin: auto;
-  width: 1000px;
-  padding: auto;
-
   padding-top: 150px;
-  justify-content: center;
-  align-items: center;
+  padding-bottom: 200px;
+  width: 500px;
+  margin: auto;
+
+
+}
+
+.schedaMessaggio{
+  
+  padding-block: 50px;
+  margin-block: 50px;
+  padding-inline: 50px;
+  border-radius: 25px;
+
+  background-color: #D59C98;
+}
+
+.nessunMessaggio{
   text-align: center;
+  padding-block: 50px;
+  margin-block: 50px;
+  padding-inline: 50px;
+  border-radius: 25px;
 
-
+  background-color: #D59C98;
 }

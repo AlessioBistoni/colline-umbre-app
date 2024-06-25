@@ -67,8 +67,10 @@ const AddWine = () => {
 
     return (
         <AdminLayout>
-            <div>
-                <h1>Aggiungi un Vino</h1>
+            <div className={styles.page}>
+            <div className={styles.container}>
+                <h1 className='mb-4'>Aggiungi un Vino</h1>
+                <div className={styles.card}>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>Nome:</label>
@@ -79,6 +81,7 @@ const AddWine = () => {
                             value={formData.name}
                             onChange={handleChange}
                             required
+                            className={styles.input}
                         />
                     </div>
                     <div>
@@ -91,6 +94,7 @@ const AddWine = () => {
                             value={formData.price}
                             onChange={handleChange}
                             required
+                            className={styles.input}
                         />
                     </div>
                     <div>
@@ -102,6 +106,7 @@ const AddWine = () => {
                             value={formData.year}
                             onChange={handleChange}
                             required
+                            className={styles.input}
                         />
                     </div>
                     <div>
@@ -113,6 +118,7 @@ const AddWine = () => {
                             value={formData.type}
                             onChange={handleChange}
                             required
+                            className={styles.input}
                         />
                     </div>
                     <div>
@@ -124,6 +130,7 @@ const AddWine = () => {
                             value={formData.short_description}
                             onChange={handleChange}
                             required
+                            className={styles.input}
                         />
                     </div>
                     <div>
@@ -135,6 +142,7 @@ const AddWine = () => {
                             value={formData.long_description}
                             onChange={handleChange}
                             required
+                            className={styles.descrizioneLunga}
                         />
                     </div>
                     <div>
@@ -144,11 +152,14 @@ const AddWine = () => {
                             name="image"
                             onChange={handleFileChange}
                             required
+                            className={styles.immagine}
                         />
                     </div>
-                    <button type="submit">Aggiungi Vino</button>
+                    <button className='mt-3 btn btn-primary'type="submit">Aggiungi Vino</button>
                 </form>
                 {message && <p>{message}</p>}
+            </div>
+            </div>
             </div>
         </AdminLayout>
     );

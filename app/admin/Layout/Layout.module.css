@@ -1,20 +1,24 @@
 .container {
 
 
-  /* width: 30%; */
-
-
   margin-top: 150px;
   min-height: 100vh;
   justify-content: center;
   align-items: center;
   margin: auto;
-  background-color: rgb(234, 204, 202);
+  /* background-color: rgb(234, 204, 202); */
+  /* background-color: rgb(232, 192, 161); */
+  /* background-color: #f9f9f9; */
+  background-color: #dedede;
 
 
 }
 
+.spacer {
+  height: 100vh;
+}
 .messaggio{
   height: 100vh;
   align-content: center;
+  text-align: center;
 }

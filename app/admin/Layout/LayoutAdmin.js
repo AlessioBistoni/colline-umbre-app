@@ -7,11 +7,18 @@ import styles from './Layout.module.css';
 
 const AdminLayout = ({ children }) => {
   const [userAdmin, setUserAdmin] = useState(null);
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     const userCookie = Cookies.get('user');
     const user = userCookie ? JSON.parse(userCookie) : null;
     setUserAdmin(user ? user.admin : null);
+
+    const timer = setTimeout(() => {
+      setShowMessage(true);
+    }, 500); // Timer di 3 secondi (3000 millisecondi)
+
+    return () => clearTimeout(timer);
   }, []);
 
 
@@ -20,22 +27,19 @@ const AdminLayout = ({ children }) => {
   return (
     <div className={styles.container}>
       <div>
+        
         {(() => {
           if (userAdmin === 1) {
             return children;
-          } else
-          if (userAdmin === 0){
-            return(
-            <div className={styles.messaggio}> 
-            <h1>Non hai accesso alla pagina</h1>;
+          } else {
+            if (showMessage) {
+              return(
+              <div className={styles.messaggio}> 
+            <h1>Non hai accesso alla pagina</h1>
             </div>);
-          }
-          else {
-            return ( 
-            <div className={styles.messaggio}>
-            <h1>Caricamento...</h1>
-            </div>
-          );
+              } else {
+                return <div className={styles.spacer}></div>
+              }
           }
         })()}
       </div>
@@ -46,3 +50,4 @@ const AdminLayout = ({ children }) => {
 };
 
 export default AdminLayout;
+

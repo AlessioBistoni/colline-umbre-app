@@ -388,7 +388,48 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
+app.get('/api/admin/orders/csv', async (req, res) => {
+  try {
+    const db = await openDB();
+    const orders = await db.all(`
+      SELECT o.*, u.nome, u.cognome, u.email 
+      FROM orders o
+      JOIN users u ON o.user_id = u.id
+    `);
 
+    for (const order of orders) {
+      const orderDetails = await db.all(`
+        SELECT od.id, od.quantity, od.price_per_unit, w.name 
+        FROM order_details od
+        JOIN wines w ON od.wine_id = w.id
+        WHERE od.order_id = ?
+      `, [order.id]);
+      order.order_details = orderDetails;
+    }
+
+    const csv = new ObjectsToCsv(orders);
+    const csvContent = await csv.toString();
+    
+    res.header('Content-Type', 'text/csv');
+    res.attachment('orders.csv');
+    res.send(csvContent);
+  } catch (error) {
+    console.error('Errore durante la generazione del CSV:', error);
+    res.status(500).json({ error: 'Errore durante la generazione del CSV' });
+  }
+});
+
+// Route per recuperare tutti gli utenti registrati
+app.get('/api/users', async (req, res) => {
+  try {
+    const db = await openDB();
+    const users = await db.all('SELECT nome, cognome, email FROM users');
+    res.status(200).json(users);
+  } catch (error) {
+    console.error('Errore nel recupero degli utenti:', error);
+    res.status(500).json({ error: 'Errore nel recupero degli utenti' });
+  }
+});
 
 
 app.listen(port, () => {

@@ -53,6 +53,7 @@ export default function Register() {
 
   return (
     <div>
+        <div className={styles.page}>
       <div className={styles.container}>
         <h1>Registrati</h1>
         <form onSubmit={handleRegister}>
@@ -100,8 +101,10 @@ export default function Register() {
           {success && <p className={styles.success}>{success}</p>}
           <button className='btn btn-primary' type="submit">Registrati</button>
         </form>
+        </div>
       </div>
       <Footer />
     </div>
+    
   );
 }

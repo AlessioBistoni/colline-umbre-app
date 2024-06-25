@@ -1,59 +1,78 @@
-.container {
-  margin: auto;
-  width: 1000px;
-  padding: auto;
-
+.page {
+  min-height: 100vh;
   padding-top: 150px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-
 }
 
-.informazioni{
-
-  border-radius: 25px;
-  padding-block: 25px;
-  background-color: rgb(213, 156, 152);
+.container {
+  padding: 20px;
+  width: 80%;
+  margin: auto;
 }
 
+.informazioni {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-
-
-.sezioneSchede{
+.sezioneSchede {
   display: flex;
-
-  padding-block: 50px;
-  justify-content: space-between;
-
-  }
-  
-.scheda{
-  
-
-  width: 480px;
-  height: 300px;
-
-  border-radius: 25px;
-  padding-block: 25px;
-  background-color: rgb(213, 156, 152);
-  
-  }
-
-.bottone{
-  padding-block: 10px;
-
+  flex-wrap: wrap;
+  gap: 20px;
 }
-.testoFinale{
-  text-align: justify;
-  /* padding-block: 50px; */
-  padding-inline: 50px;
-  /* background-color: rgb(213, 156, 152); */
-  border-radius: 25px;
+
+.scheda {
+  flex: 1 1 calc(50% - 20px); /* Due schede per riga */
+  min-width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-  
-.caricamento{
-  align-items: center;
-  height: 100vh;
+
+.bottone {
+  margin-top: 10px;
+}
+
+.bottone a {
+  text-decoration: none;
+}
+
+.bottone button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.bottone button:hover {
+  background-color: #0056b3;
+}
+
+.testoFinale {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query per vista telefono */
+@media (max-width: 768px) {
+  .sezioneSchede {
+    flex-direction: column;
+  }
+
+  .scheda {
+    flex: 1 1 100%; /* Una scheda per riga */
+  }
+  .container {
+    width: 98%;
+  }
 }
