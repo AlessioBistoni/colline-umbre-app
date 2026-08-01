@@ -11,7 +11,7 @@ const UsersPage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/users');
+        const response = await fetch('/api/users');
         if (!response.ok) {
           throw new Error('Errore durante il recupero degli utenti');
         }
@@ -29,7 +29,7 @@ const UsersPage = () => {
 
   const handleDelete = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/users/${userId}`, {
+      const response = await fetch(`/api/users/${userId}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
@@ -67,7 +67,7 @@ const UsersPage = () => {
                     <td>{user.cognome}</td>
                     <td>{user.email}</td>
                     <td>
-                    {user.admin === 1 ? (
+                    {user.admin ? (
                         <span>admin</span>
                       ) : (
                         <button className='btn btn-primary' onClick={() => handleDelete(user.id)}>Elimina</button>

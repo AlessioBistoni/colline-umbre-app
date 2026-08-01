@@ -43,7 +43,7 @@ const AddWine = () => {
         data.append('image', formData.image);
 
         try {
-            const response = await fetch('http://localhost:3001/api/wines', {
+            const response = await fetch('/api/wines', {
                 method: 'POST',
                 body: data
             });

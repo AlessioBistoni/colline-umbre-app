@@ -11,7 +11,7 @@ const MessagesPage = () => {
 
   const fetchMessages = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/messages');
+      const response = await fetch('/api/messages');
       if (!response.ok) {
         throw new Error('Errore nel recupero dei messaggi');
       }
@@ -24,7 +24,7 @@ const MessagesPage = () => {
 
   const deleteMessage = async (messageId) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/messages/${messageId}`, {
+      const response = await fetch(`/api/messages/${messageId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ const MessagesPage = () => {
     
     if (confirmDelete) {
       try {
-        const response = await fetch('http://localhost:3001/api/messages', {
+        const response = await fetch('/api/messages', {
           method: 'DELETE',
         });
         if (!response.ok) {

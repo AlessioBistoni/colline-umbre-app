@@ -3,7 +3,7 @@ import React from 'react';
 const DownloadOrdersButton = () => {
   const handleDownload = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/admin/orders/csv');
+      const response = await fetch('/api/admin/orders/csv');
       if (!response.ok) {
         throw new Error('Errore durante il download del CSV');
       }

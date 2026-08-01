@@ -12,7 +12,7 @@ const DeleteButton = ({ wineId }) => {
 
     if (confirmDelete) {
       try {
-        const response = await fetch(`http://localhost:3001/api/wines/${wineId}`, {
+        const response = await fetch(`/api/wines/${wineId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

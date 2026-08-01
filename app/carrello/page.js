@@ -13,7 +13,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/cart/${userId}`);
+        const response = await fetch(`/api/cart/${userId}`);
         if (!response.ok) {
           throw new Error('Errore durante il recupero dei dati del carrello');
         }
@@ -29,7 +29,7 @@ const Cart = () => {
 
   const handleIncreaseQuantity = async (wineId) => {
     try {
-      const response = await fetch('http://localhost:3001/api/cart/increase', {
+      const response = await fetch('/api/cart/increase', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const Cart = () => {
 
   const handleDecreaseQuantity = async (wineId) => {
     try {
-      const response = await fetch('http://localhost:3001/api/cart/decrease', {
+      const response = await fetch('/api/cart/decrease', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const Cart = () => {
 
   const handleRemoveItem = async (wineId) => {
     try {
-      const response = await fetch('http://localhost:3001/api/cart/remove', {
+      const response = await fetch('/api/cart/remove', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const Cart = () => {
 
   const handlePurchase = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/orders', {
+      const response = await fetch('/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

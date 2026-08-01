@@ -9,7 +9,7 @@ const Bottone = ({ userId, wineId }) => {
 
   const handleClick = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/addToCart', {
+      const response = await fetch('/api/addToCart', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

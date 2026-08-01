@@ -4,7 +4,7 @@ import React from 'react';
 const DownloadCsvButton = () => {
   const handleDownload = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/messages/csv');
+      const response = await fetch('/api/messages/csv');
       if (!response.ok) {
         throw new Error('Errore nel download del file CSV');
       }

@@ -29,7 +29,7 @@ const AdminLayout = ({ children }) => {
       <div>
         
         {(() => {
-          if (userAdmin === 1) {
+          if (userAdmin) {
             return children;
           } else {
             if (showMessage) {

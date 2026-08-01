@@ -17,7 +17,7 @@ const RemoveWinePage = () => {
 
     const fetchWines = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/wines');
+            const response = await fetch('/api/wines');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

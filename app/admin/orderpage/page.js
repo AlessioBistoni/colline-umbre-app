@@ -9,7 +9,7 @@ const OrdersPage = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/admin/orders');
+        const response = await fetch('/api/admin/orders');
         if (!response.ok) {
           throw new Error('Errore durante il recupero degli ordini');
         }
